@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require('dotenv').config();
 
 const mongoose = require("mongoose");
 //const routes = require("./routes");
@@ -24,6 +25,9 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('Established connection with MongoDB database.')
 });
+
+const usersRouter = require('./routes/users.js');
+app.use('/users', usersRouter);
 
 // Start the API server
 app.listen(PORT, function() {
