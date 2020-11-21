@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import Resources from "./components/Resources";
@@ -15,7 +15,7 @@ function App() {
     <div>
     <CssBaseline />
     <Navbar />
-    <Route exact path="/" component={Login}/>
+    <Route exact path="/" component={Signup}/>
     <Route exact path="/feed" component={Feed}/>
     <Route exact path="/profile" component={Profile}/>
     <Route exact path="/resources" component={Resources}/>
