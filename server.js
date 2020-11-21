@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+require('dotenv').config();
 
 const mongoose = require("mongoose");
-//const routes = require("./routes");
+const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -15,11 +16,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-//app.use(routes);
+app.use(routes);
 
 // Connect to the Mongo DB
 const uri = process.env.ATLAS_URI;
+
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('Established connection with MongoDB database.')
