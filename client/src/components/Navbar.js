@@ -14,19 +14,46 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
-import {Home} from '@material-ui/icons';
+import {Home, ExitToApp, Announcement, AccountCircle, Create, Chat, Book} from '@material-ui/icons';
+
 
 const useStyles = makeStyles(theme => ({
     sliderMenu:{
-        background: "blue"
+        background: "",
+        width: "20vw"
     }
 }))
 
 const menuItems = [
     {
-        listIcon: <Home />,
-        listText: "Home",
+        listIcon: <ExitToApp />,
+        listText: "Login",
         listPath: "/"
+    },
+    {
+        listIcon: <Announcement />,
+        listText: "Feed",
+        listPath: "/feed"
+    },
+    {
+        listIcon: <AccountCircle />,
+        listText: "Profile",
+        listPath: "/profile"
+    },
+    {
+        listIcon: <Create />,
+        listText: "Editor",
+        listPath: "/editor"
+    },
+    {
+        listIcon: <Chat />,
+        listText: "Chat",
+        listPath: "/chat"
+    },
+    {
+        listIcon: <Book />,
+        listText: "Resources",
+        listPath: "/resources"
     }]
 
 export default function Navbar() {
@@ -57,7 +84,7 @@ export default function Navbar() {
     return (
         <div>
             <Box component="nav">
-                <AppBar position="static" style={{background: "blue"}}>
+                <AppBar position="static" style={{background: "#457b9d"}}>
                     <Toolbar>
                     <IconButton onClick={toggleSlider("left", true)}>
                             <MenuIcon style={{ color: "white" }}/>
