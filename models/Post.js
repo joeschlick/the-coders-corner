@@ -39,19 +39,7 @@ const userSchema = new Schema({
   jobTitle: { 
     type: String,
     required: true 
-  },
-  posts:[{
-    post:{
-      type: String,
-    },
-    likes:{
-      type: Number
-    },
-    time:{
-      type: Date,
-      default: Date.now
-    }
-  }]
+  }
 });
 
 const User = mongoose.model("User", userSchema);

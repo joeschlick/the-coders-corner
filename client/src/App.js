@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Signup from "./components/Signup";
+import Feed from "./components/Feed";
+import Profile from "./components/Profile";
+import Resources from "./components/Resources";
+import Chat from "./components/Chat";
+import Editor from "./components/Editor";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CssBaseline />
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Signup/>
+        </Route>
+        <Route exact path="/feed">
+          <Feed/>
+        </Route>
+        <Route exact path="/profile">
+          <Profile/>
+        </Route>
+        <Route exact path="/resources">
+          <Resources/>
+        </Route>
+        <Route exact path="/chat">
+          <Chat/>
+        </Route>
+        <Route exact path="/editor">
+          <Editor/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
