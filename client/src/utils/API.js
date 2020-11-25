@@ -14,10 +14,10 @@ export default {
   },
 
   saveUser: function(userData) {
-    return axios.post("/api/user/add", userData);
+    return axios.post("/api/users/add", userData);
   },
 
   updateUser: function(id) {
-    return axios.post("/api/user/update" + id);
+    return axios.post("/api/users/update" + id);
   }
 };

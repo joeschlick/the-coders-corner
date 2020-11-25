@@ -4,101 +4,127 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
 export default function Signup() {
-    const [user, setUser] = useState([]);
-    // const [email, setEmail] = useState("");
-    // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [job, setJob] = useState("");
-    // const [fName, setfName] = useState("");
-    // const [lName, setlName] = useState("");
-    // const [github, setGithub] = useState("");
-    // const [linkedin, setLinkedin] = useState("");
-    // const [portfolio, setPortfolio] = useState("");
+    const [users, setUsers] = useState([]);
+    const [formObject, setFormObject] = useState([]);
 
-    useEffect(() => {
-        saveUsers()
-    },[])
-    function saveUsers() {
-        API.saveUser().then((res) => {
-            setUser(res.data)
-        }).catch(err => console.log(err));
-    } 
-
-    function handleSubmit(event) {
-        event.preventDefault();
+    //Grab all users to display
+    function loadUsers(){
+        API.getUsers()
+            .then((res) => {
+                setUsers(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
+
+     //Delete a User from the Database
+     function deleteUser(id){
+        API.deleteUser(id)
+            .then((res) => {
+                loadUsers();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+     //Updating inputs
+     function handleInputChange(e){
+        const { name, value } = e.target;
+        setFormObject({ ...formObject, [name]: value });
+    }
+
+    //Save users and reload users from database
+    function handleFormSubmit(e){
+        e.preventDefault();
+        if(formObject.firstName && formObject.lastName && formObject.userName && formObject.password && formObject.email && formObject.jobTitle){
+            API.saveUser({
+                firstName: formObject.firstName,
+                lastName: formObject.lastName,
+                userName: formObject.userName,
+                password: formObject.password,
+                email: formObject.email,
+                github: formObject.github,
+                linkedin: formObject.linkedin,
+                jobTitle: formObject.jobTitle
+            })
+            .then((res) => {
+                loadUsers();
+            })
+            .catch((err) => console.log(err));
+            console.log(formObject);
+        }
+    }
+
+
     return (
         <div style={{alignItems: "center"}}>
-            <form onChange={handleSubmit}>
-            <Input
-                onChange={() => {}}
-                name="firstName"
-                placeholder="First Name"
+            <form>
+                <Input
+                    onChange={handleInputChange}
+                    name="firstName"
+                    placeholder="First Name (required)"
                 />
-            <Input
-                onChange={() => {}}
-                name="lastName"
-                placeholder="Last Name"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    name="lastName"
+                    placeholder="Last Name (required)"
                 />
-            <Input
-                onChange={() => {}}
-                name="userName"
-                placeholder="Username"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    name="userName"
+                    placeholder="Username (required)"
                 />
-            <Input
-                onChange={() => {}}
-                name="password"
-                placeholder="Password"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    type="password"
+                    name="password"
+                    placeholder="Password (required)"
                 />
-            <Input
-                onChange={() => {}}
-                name="email"
-                placeholder="Email"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    name="email"
+                    type="email"
+                    placeholder="Email (required)"
                 />
-            <Input
-                onChange={() => {}}
-                name="github"
-                placeholder="Github"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    name="github"
+                    placeholder="Github (Optional)"
                 />
-            <Input
-                onChange={() => {}}
-                name="linkedin"
-                placeholder="Linkedin"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    name="linkedin"
+                    placeholder="Linkedin (Optional)"
                 />
-            <Input
-                onChange={() => {}}
-                name="jobTitle"
-                placeholder="Job Title"
+                <br/>
+                <Input
+                    onChange={handleInputChange}
+                    name="jobTitle"
+                    placeholder="Job Title (required)"
                 />
-            <Button type="submit" onClick={() => {}}>Submit</Button>
-            {/* <label>Email:</label>
-                <input type="text" onChange={(event) => setEmail(event.target.value)}></input>
-                <br></br>
-            <label>Username:</label>
-                <input type="text" onChange={(event) => setUsername(event.target.value)}></input>
-                <br></br>
-            <label>Password:</label>
-                <input type="password" onChange={(event) => setPassword(event.target.value)}></input>
-                <br></br>
-            <label>Job Title:</label>
-                <input type="text" onChange={(event) => setJob(event.target.value)}></input>
-                <br></br>
-            <label>First Name:</label>
-                <input type="text" onChange={(event) => setfName(event.target.value)}></input>
-                <br></br>
-            <label>Last Name:</label>
-                <input type="text" onChange={(event) => setlName(event.target.value)}></input>
-                <br></br>
-            <label>Github Username:</label>
-                <input type="text" onChange={(event) => setGithub(event.target.value)}></input>
-                <br></br>
-            <label>LinkedIn URL:</label>
-                <input type="text" onChange={(event) => setLinkedin(event.target.value)}></input>
-                <br></br>
-            <label>Portfolio:</label>
-                <input type="text" onChange={(event) => setPortfolio(event.target.value)}></input>
-                <br></br>
-                <button type="submit">Sign Up</button> */}
+                <br/>
+            <button 
+                disabled={!(formObject.firstName && formObject.lastName && formObject.userName && formObject.password && formObject.email)} 
+                onClick={handleFormSubmit}
+            >
+                Submit
+            </button>
+            <ul>
+                {users.map(user => (
+                    <li key={user._id}>
+                        {user.userName}
+                    </li>
+                ))}
+              </ul>
+
             </form>
         </div>
     )

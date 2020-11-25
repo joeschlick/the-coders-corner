@@ -12,16 +12,31 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div>
-    <CssBaseline />
-    <Navbar />
-    <Route exact path="/" component={Signup}/>
-    <Route exact path="/feed" component={Feed}/>
-    <Route exact path="/profile" component={Profile}/>
-    <Route exact path="/resources" component={Resources}/>
-    <Route exact path="/chat" component={Chat}/>
-    <Route exact path="/editor" component={Editor}/>
-    </div>
+    <Router>
+      <CssBaseline />
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Signup/>
+        </Route>
+        <Route exact path="/feed">
+          <Feed/>
+        </Route>
+        <Route exact path="/profile">
+          <Profile/>
+        </Route>
+        <Route exact path="/resources">
+          <Resources/>
+        </Route>
+        <Route exact path="/chat">
+          <Chat/>
+        </Route>
+        <Route exact path="/editor">
+          <Editor/>
+        </Route>
+      </Switch>
+    </Router>
+
   );
 }
 
