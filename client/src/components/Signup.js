@@ -4,7 +4,6 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
 export default function Signup() {
-    
     const [users, setUsers] = useState([]);
     const [formObject, setFormObject] = useState([]);
 
@@ -125,6 +124,7 @@ export default function Signup() {
                     </li>
                 ))}
               </ul>
+
             </form>
         </div>
     )
