@@ -26,8 +26,8 @@ function NewsHeader() {
       url: 'https://newscatcher.p.rapidapi.com/v1/search_free',
       params: {q: 'Web Development', media: 'True', lang: 'en'},
       headers: {
-        // 'x-rapidapi-key': '12d5ec1238msh592efbbc1c917e7p1b499ejsnc4830fc60542',
-        "x-rapidapi-key": "2b07b6ec73mshd7f568f32fa4427p1efeb3jsnf11a6a1c6510",
+        'x-rapidapi-key': '12d5ec1238msh592efbbc1c917e7p1b499ejsnc4830fc60542',
+        // "x-rapidapi-key": "2b07b6ec73mshd7f568f32fa4427p1efeb3jsnf11a6a1c6510",
         'x-rapidapi-host': 'newscatcher.p.rapidapi.com'
       }
     };

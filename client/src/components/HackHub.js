@@ -18,10 +18,10 @@ export default function Profile() {
     return (
         <div>
             <Typography className={classes.title} variant='h2' align="center">
-                Chat
+                HackHub
             </Typography>
             <Typography className={classes.headline} variant='h5' align="center">
-                Message fellow developers!
+                See what the hubbub is about!
             </Typography>
         </div>
     )

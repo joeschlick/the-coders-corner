@@ -19,5 +19,9 @@ export default {
 
   updateUser: function(id) {
     return axios.post("/api/users/update" + id);
-  }
+  },
+
+  // checkUser: function(email, password) {
+  //   return axios.get("/api/users/")
+  // }
 };

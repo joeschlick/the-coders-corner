@@ -5,10 +5,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Signup from "./components/Signup";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
-import Resources from "./components/Resources";
+import HackHub from "./components/HackHub";
 import Chat from "./components/Chat";
 import Editor from "./components/Editor";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -25,14 +26,17 @@ function App() {
         <Route exact path="/profile">
           <Profile/>
         </Route>
-        <Route exact path="/resources">
-          <Resources/>
+        <Route exact path="/hackhub">
+          <HackHub/>
         </Route>
         <Route exact path="/chat">
           <Chat/>
         </Route>
         <Route exact path="/editor">
           <Editor/>
+        </Route>
+        <Route exact path="/login">
+          <Login/>
         </Route>
       </Switch>
     </Router>

@@ -14,47 +14,53 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
-import {Home, ExitToApp, Announcement, AccountCircle, Create, Chat, Book} from '@material-ui/icons';
+import {Home, ExitToApp, Forum, DynamicFeed, AccountCircle, Code, Group, LockOpen} from '@material-ui/icons';
 
 
 const useStyles = makeStyles(theme => ({
     sliderMenu:{
         background: "",
-        width: "20vw"
+        width: "200px"
     }
 }))
 
 const menuItems = [
-    {
-        listIcon: <ExitToApp />,
-        listText: "Login",
-        listPath: "/"
-    },
-    {
-        listIcon: <Announcement />,
-        listText: "Feed",
-        listPath: "/feed"
-    },
     {
         listIcon: <AccountCircle />,
         listText: "Profile",
         listPath: "/profile"
     },
     {
-        listIcon: <Create />,
-        listText: "Editor",
-        listPath: "/editor"
+        listIcon: <Group />,
+        listText: "HackHub",
+        listPath: "/hackhub"
     },
     {
-        listIcon: <Chat />,
+        listIcon: <DynamicFeed />,
+        listText: "Feed",
+        listPath: "/feed"
+    },
+    {
+        listIcon: <Forum />,
         listText: "Chat",
         listPath: "/chat"
     },
     {
-        listIcon: <Book />,
-        listText: "Resources",
-        listPath: "/resources"
-    }]
+        listIcon: <Code />,
+        listText: "Editor",
+        listPath: "/editor"
+    },
+    {
+        listIcon: <ExitToApp />,
+        listText: "Sign Up",
+        listPath: "/"
+    },
+    {
+        listIcon: <LockOpen />,
+        listText: "Login",
+        listPath: "/login"
+    }
+]
 
 export default function Navbar() {
     const classes = useStyles()
