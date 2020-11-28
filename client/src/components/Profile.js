@@ -34,7 +34,7 @@ export default function Profile(props) {
 
     <Grid container justify="center">
         <Grid item xs={12} sm={6}>
-            <Card className={classes.cardStyles}>
+            <Card className={classes.cardStyles} style={{ height:400, width:"95%"}}>
                 <CardContent>
                 <Typography variant="h5" component="h2">
                     @UserName goes here
@@ -44,7 +44,7 @@ export default function Profile(props) {
             </Card>  
         </Grid>
         <Grid item xs={12} sm={6}>
-            <Card className={classes.cardStyles}>
+            <Card className={classes.cardStyles} style={{ height:400, width:"95%"}}>
             <CardContent>
                 <Typography variant="h6">
                     FirstName LastName
