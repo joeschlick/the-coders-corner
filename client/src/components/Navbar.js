@@ -14,47 +14,55 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
-import {Home, ExitToApp, Announcement, AccountCircle, Create, Chat, Book} from '@material-ui/icons';
+import {Home, ExitToApp, Forum, DynamicFeed, AccountCircle, Code, Group, LockOpen} from '@material-ui/icons';
 
 
 const useStyles = makeStyles(theme => ({
     sliderMenu:{
-        background: "",
-        width: "20vw"
+        background: "#457b9d",
+        width: "200px",
+        color: "white",
+        height: "100%"
     }
 }))
 
 const menuItems = [
-    {
-        listIcon: <ExitToApp />,
-        listText: "Login",
-        listPath: "/"
-    },
-    {
-        listIcon: <Announcement />,
-        listText: "Feed",
-        listPath: "/feed"
-    },
     {
         listIcon: <AccountCircle />,
         listText: "Profile",
         listPath: "/profile"
     },
     {
-        listIcon: <Create />,
-        listText: "Editor",
-        listPath: "/editor"
+        listIcon: <Group />,
+        listText: "HackHub",
+        listPath: "/hackhub"
     },
     {
-        listIcon: <Chat />,
+        listIcon: <DynamicFeed />,
+        listText: "Feed",
+        listPath: "/feed"
+    },
+    {
+        listIcon: <Forum />,
         listText: "Chat",
         listPath: "/chat"
     },
     {
-        listIcon: <Book />,
-        listText: "Resources",
-        listPath: "/resources"
-    }]
+        listIcon: <Code />,
+        listText: "Editor",
+        listPath: "/editor"
+    },
+    {
+        listIcon: <ExitToApp />,
+        listText: "Sign Up",
+        listPath: "/"
+    },
+    {
+        listIcon: <LockOpen />,
+        listText: "Login",
+        listPath: "/login"
+    }
+]
 
 export default function Navbar() {
     const classes = useStyles()
@@ -68,10 +76,10 @@ export default function Navbar() {
         return(
         <Box className={classes.sliderMenu} component="div" onClick={toggleSlider(slider, false)}>
                 <Divider />
-                <List>
+                <List >
                     {menuItems.map((items, key) => (
                     <ListItem button key={key} component={Link} to={items.listPath}> 
-                        <ListItemIcon >
+                        <ListItemIcon style={{color: "white"}}>
                             {items.listIcon}
                         </ListItemIcon>
                         <ListItemText primary={items.listText}/>
@@ -92,7 +100,7 @@ export default function Navbar() {
                         <Typography variant="h5" style={{color: "white"}}>
                             Coder's Corner
                         </Typography>
-                        <MobileLeftMenuSlider 
+                        <MobileLeftMenuSlider
                             anchor="left" 
                             open={state.left} 
                             onClose={toggleSlider("left", false)}
