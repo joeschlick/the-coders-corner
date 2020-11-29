@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/feed">
           <Feed/>
         </Route>
-        <Route exact path="/profile">
+        <Route exact path="/profile"> 
           <Profile/>
         </Route>
         <Route exact path="/hackhub">

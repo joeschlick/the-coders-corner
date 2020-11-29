@@ -37,7 +37,7 @@ export default function Profile(props) {
             <Card className={classes.cardStyles} style={{ height:400, width:"95%"}}>
                 <CardContent>
                 <Typography variant="h5" component="h2">
-                    @UserName goes here
+                    {props.userName}
                 </Typography>
                 <img src="https://via.placeholder.com/300"></img>
                 </CardContent>
@@ -47,7 +47,7 @@ export default function Profile(props) {
             <Card className={classes.cardStyles} style={{ height:400, width:"95%"}}>
             <CardContent>
                 <Typography variant="h6">
-                    FirstName LastName
+                    {props.firstName} {props.lastName}
                 </Typography>
                 <Typography variant="h6">
                     Job Description
