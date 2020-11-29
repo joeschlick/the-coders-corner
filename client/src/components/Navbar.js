@@ -19,8 +19,10 @@ import {Home, ExitToApp, Forum, DynamicFeed, AccountCircle, Code, Group, LockOpe
 
 const useStyles = makeStyles(theme => ({
     sliderMenu:{
-        background: "",
-        width: "200px"
+        background: "#457b9d",
+        width: "200px",
+        color: "white",
+        height: "100%"
     }
 }))
 
@@ -74,10 +76,10 @@ export default function Navbar() {
         return(
         <Box className={classes.sliderMenu} component="div" onClick={toggleSlider(slider, false)}>
                 <Divider />
-                <List>
+                <List >
                     {menuItems.map((items, key) => (
                     <ListItem button key={key} component={Link} to={items.listPath}> 
-                        <ListItemIcon >
+                        <ListItemIcon style={{color: "white"}}>
                             {items.listIcon}
                         </ListItemIcon>
                         <ListItemText primary={items.listText}/>
@@ -98,7 +100,7 @@ export default function Navbar() {
                         <Typography variant="h5" style={{color: "white"}}>
                             Coder's Corner
                         </Typography>
-                        <MobileLeftMenuSlider 
+                        <MobileLeftMenuSlider
                             anchor="left" 
                             open={state.left} 
                             onClose={toggleSlider("left", false)}

@@ -1,7 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import API from "../utils/API";
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+import { 
+    Input, 
+    Avatar, 
+    Button, 
+    CssBaseline, 
+    TextField, 
+    FormControlLabel,
+    Checkbox,
+    Link,
+    Grid,
+    Box,
+    Typography,
+    Container 
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 
 export default function Signup() {
     const [users, setUsers] = useState([]);
@@ -57,75 +71,148 @@ export default function Signup() {
         }
     }
 
+          //Styling
+          const useStyles = makeStyles((theme) => ({
+            paper: {
+              marginTop: theme.spacing(8),
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            },
+            avatar: {
+              margin: theme.spacing(1),
+              backgroundColor: "#457b9d",
+            },
+            form: {
+              width: '60%', // Fix IE 11 issue.
+              marginTop: theme.spacing(1),
+            },
+            submit: {
+              margin: theme.spacing(3, 0, 2),
+              background: "#457b9d",
+              color: "white"
+            },
+          }));
+    
+          const classes = useStyles();
 
     return (
-        <div style={{alignItems: "center"}}>
-            <form>
-                <Input
-                    onChange={handleInputChange}
-                    name="firstName"
-                    placeholder="First Name (required)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    name="lastName"
-                    placeholder="Last Name (required)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    name="userName"
-                    placeholder="Username (required)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    type="password"
-                    name="password"
-                    placeholder="Password (required)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    name="email"
-                    type="email"
-                    placeholder="Email (required)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    name="github"
-                    placeholder="Github (Optional)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    name="linkedin"
-                    placeholder="Linkedin (Optional)"
-                />
-                <br/>
-                <Input
-                    onChange={handleInputChange}
-                    name="jobTitle"
-                    placeholder="Job Title (required)"
-                />
-                <br/>
-            <button 
-                disabled={!(formObject.firstName && formObject.lastName && formObject.userName && formObject.password && formObject.email)} 
-                onClick={handleFormSubmit}
-            >
-                Submit
-            </button>
-            <ul>
-                {users.map(user => (
-                    <li key={user._id}>
-                        {user.userName}
-                    </li>
-                ))}
-              </ul>
+        <Container>
+            <CssBaseline/>
+            <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                    <ExitToApp />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Signup
+                </Typography>
+                <form className={classes.form} noValidate>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="firstName"
+                        onChange={handleInputChange}
+                        name="firstName"
+                        autoFocus
+                        label="Fist Name"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="lastName"
+                        onChange={handleInputChange}
+                        name="lastName"
+                        autoFocus
+                        label="Last Name"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="userName"
+                        onChange={handleInputChange}
+                        name="userName"
+                        autoFocus
+                        label="Username"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="password"
+                        onChange={handleInputChange}
+                        type="password"
+                        name="password"
+                        autoFocus
+                        label="Password"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        onChange={handleInputChange}
+                        name="email"
+                        type="email"
+                        autoFocus
+                        label="Email"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        id="github"
+                        onChange={handleInputChange}
+                        name="github"
+                        autoFocus
+                        label="Github Username"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        id="linkedin"
+                        onChange={handleInputChange}
+                        name="linkedin"
+                        autoFocus
+                        label="Linkedin Username"
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="jobTitle"
+                        onChange={handleInputChange}
+                        name="jobTitle"
+                        label="Job Title"
+                    />
+                <Button
+                    fullWidth
+                    className={classes.submit}
+                    variant="contained" 
+                    disabled={!(formObject.firstName && formObject.lastName && formObject.userName && formObject.password && formObject.email)} 
+                    onClick={handleFormSubmit}
+                >
+                    Submit
+                </Button>
+                <ul>
+                    {users.map(user => (
+                        <li key={user._id}>
+                            {user.userName}
+                        </li>
+                    ))}
+                </ul>
 
-            </form>
-        </div>
+                </form>
+            </div>
+        </Container>
     )
 }
