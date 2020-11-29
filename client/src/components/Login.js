@@ -16,8 +16,12 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Profile from ".//Profile";
+import {Route} from 'react-router-dom';
+
 
 export default function Login() {
+    const [userObject, setUserObject] = useState([])
     const [formObject, setFormObject] = useState([]);
 
     function loadUsers(){
@@ -44,12 +48,14 @@ export default function Login() {
                 // getUsers(res.data);
                 console.log(res.data);
                 let allUsers = res.data;
-                let userID = allUsers.filter(user => {
+                let userInfo = allUsers.filter(user => {
                     if (user.email === formObject.email && user.password === formObject.password) {
-                        return user
+                        return (<Profile userName={user.userName} firstName={user.firstName} lastName={user.lastName} />)
                     }
                 })
-                console.log(userID)
+                console.log(userInfo)
+                setUserObject(userInfo[0]);
+            
             })
             .catch((err) => {
                 console.log(err);
@@ -78,6 +84,29 @@ export default function Login() {
             {'.'}
           </Typography>
         );
+      }
+
+      function checkUser(user) {
+        e.preventDefault();
+        if(formObject.email){
+            API.getUsers()
+            .then((res) => {
+                // getUsers(res.data);
+                console.log(res.data);
+                let allUsers = res.data;
+                let userInfo = allUsers.filter(user => {
+                    if (user.email === formObject.email && user.password === formObject.password) {
+                        return user
+                    }
+                })
+                console.log(userInfo)
+                setUserObject(userInfo[0]);
+            
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        }
       }
 
       //Styling
@@ -149,6 +178,8 @@ export default function Login() {
                         variant="contained" 
                         disabled={!(formObject.email && formObject.password)} 
                         onClick={handleFormSubmit}
+                        // {formObject.email ? (<Profile/>) : (<Login/>)}
+                        
                     >
                         Log In
                     </Button>
@@ -157,6 +188,11 @@ export default function Login() {
             <Box mt={8}>
                 <Copyright />
             </Box>
+
+            {/* <Profile userName={userObject.userName} firstName={userObject.firstName} lastName={userObject.lastName} key={formObject._id}/> */}
+
+
         </Container>
     )
 }
+
