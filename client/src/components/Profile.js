@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,8 +7,7 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-
-
+import UserContext from '../context/UserContext';
 
 const useStyles = makeStyles({
     cardStyles: {
@@ -25,9 +24,9 @@ const useStyles = makeStyles({
       }
   });
 
-export default function Profile(props) {
+export default function Profile() {
     const classes = useStyles();
-  
+    const { userData } = useContext(UserContext);
     return (
     <div>
     <Container>
@@ -37,7 +36,7 @@ export default function Profile(props) {
             <Card className={classes.cardStyles} style={{ height:400, width:"95%"}}>
                 <CardContent>
                 <Typography variant="h5" component="h2">
-                    {props.userName}
+                  {userData.user.userName}{ console.log(userData) }
                 </Typography>
                 <img src="https://via.placeholder.com/300"></img>
                 </CardContent>
@@ -47,16 +46,15 @@ export default function Profile(props) {
             <Card className={classes.cardStyles} style={{ height:400, width:"95%"}}>
             <CardContent>
                 <Typography variant="h6">
-                    {props.firstName} {props.lastName}
                 </Typography>
                 <Typography variant="h6">
                     Job Description
                 </Typography>
                 <Typography variant="body1" component="p">
                 {/* <Link href="#" onClick={preventDefault}>Link</Link> */}
-                <Link href="#">Github</Link>
+                <Link href="https://github.com/">{userData.user.github}</Link>
                 <br></br>
-                <Link href="#">LinkedIn</Link>
+                  <Link href="#">{userData.user.linkedin}</Link>
                 <br></br>
                 <Link href="#">Link</Link>
                 </Typography>
@@ -71,7 +69,9 @@ export default function Profile(props) {
             User Posts:
           </Typography>
           <Typography variant="h6">
-            Pull in user's posts here.
+            {/*userData.posts.map(post => (
+              <Typography>{post.post}</Typography>
+            ))*/}
           </Typography>
         </CardContent>
       </Card> 
