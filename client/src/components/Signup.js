@@ -114,7 +114,7 @@ export default function Signup() {
                         onChange={handleInputChange}
                         name="firstName"
                         autoFocus
-                        label="Fist Name"
+                        label="First Name"
                     />
                     <TextField
                         variant="outlined"
