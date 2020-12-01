@@ -1,16 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import API from "../utils/API";
-import { 
-    Input, 
+import {  
     Avatar, 
     Button, 
     CssBaseline, 
     TextField, 
-    FormControlLabel,
-    Checkbox,
-    Link,
-    Grid,
-    Box,
     Typography,
     Container 
 } from '@material-ui/core';
@@ -20,6 +15,8 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 export default function Signup() {
     const [users, setUsers] = useState([]);
     const [formObject, setFormObject] = useState([]);
+
+    const history = useHistory();
 
     //Grab all users to display
     function loadUsers(){
@@ -68,6 +65,7 @@ export default function Signup() {
             })
             .catch((err) => console.log(err));
             console.log(formObject);
+            history.push("/login")
         }
     }
 

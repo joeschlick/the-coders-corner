@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles'
-
+import UserContext from '../context/UserContext';
 
 const useStyles = makeStyles(theme => ({
     title:{
@@ -15,8 +15,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function Profile() {
     let classes = useStyles();
+    const { userData } = useContext(UserContext);
     return (
         <div>
+            {console.log(userData)}
             <Typography className={classes.title} variant='h2' align="center">
                 HackHub
             </Typography>

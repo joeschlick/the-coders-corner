@@ -1,26 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import UserContext from '../context/UserContext';
 import API from "../utils/API";
-import { 
-    Input, 
+import {  
     Avatar, 
     Button, 
     CssBaseline, 
-    TextField, 
-    FormControlLabel,
-    Checkbox,
-    Link,
-    Grid,
+    TextField,
     Box,
     Typography,
     Container 
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Profile from ".//Profile";
-import {Route} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 export default function Login() {
+
+    const { userData, setUserData } = useContext(UserContext);
+    const history = useHistory();
+
     const [userObject, setUserObject] = useState([])
     const [formObject, setFormObject] = useState([]);
 
@@ -50,12 +49,13 @@ export default function Login() {
                 let allUsers = res.data;
                 let userInfo = allUsers.filter(user => {
                     if (user.email === formObject.email && user.password === formObject.password) {
-                        return (<Profile userName={user.userName} firstName={user.firstName} lastName={user.lastName} />)
+                        return true;
                     }
                 })
                 console.log(userInfo)
                 setUserObject(userInfo[0]);
-            
+                setUserData({user:userInfo[0]})
+                history.push("/profile")
             })
             .catch((err) => {
                 console.log(err);
@@ -85,7 +85,7 @@ export default function Login() {
           </Typography>
         );
       }
-
+      /*
       function checkUser(user) {
         e.preventDefault();
         if(formObject.email){
@@ -108,6 +108,7 @@ export default function Login() {
             })
         }
       }
+      */
 
       //Styling
       const useStyles = makeStyles((theme) => ({
@@ -178,8 +179,6 @@ export default function Login() {
                         variant="contained" 
                         disabled={!(formObject.email && formObject.password)} 
                         onClick={handleFormSubmit}
-                        // {formObject.email ? (<Profile/>) : (<Login/>)}
-                        
                     >
                         Log In
                     </Button>
