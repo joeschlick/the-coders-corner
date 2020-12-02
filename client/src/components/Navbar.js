@@ -16,7 +16,6 @@ import MobileLeftMenuSlider from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import {Home, ExitToApp, Forum, DynamicFeed, AccountCircle, Code, Group, LockOpen} from '@material-ui/icons';
 
-
 const useStyles = makeStyles(theme => ({
     sliderMenu:{
         background: "#457b9d",
@@ -59,7 +58,7 @@ const menuItems = [
     },
     {
         listIcon: <LockOpen />,
-        listText: "Login",
+        listText: "Logout",
         listPath: "/login"
     }
 ]
@@ -97,7 +96,8 @@ export default function Navbar() {
                     <IconButton onClick={toggleSlider("left", true)}>
                             <MenuIcon style={{ color: "white" }}/>
                         </IconButton>
-                        <Typography variant="h5" style={{color: "white"}}>
+                        <i class="fab fa-connectdevelop fa-3x"></i>
+                        <Typography class="navbar-title" variant="h1" style={{color: "white", marginLeft: "10px"}}>
                             Coder's Corner
                         </Typography>
                         <MobileLeftMenuSlider

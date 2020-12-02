@@ -46,16 +46,19 @@ export default function Login() {
             .then((res) => {
                 // getUsers(res.data);
                 console.log(res.data);
+                localStorage.clear();
                 let allUsers = res.data;
-                let userInfo = allUsers.filter(user => {
+                allUsers.filter(user => {
                     if (user.email === formObject.email && user.password === formObject.password) {
-                        return true;
+                        console.log(user);
+                        setUserObject(user);
+                        setUserData({user:user})
+                        localStorage.setItem("user", JSON.stringify({user: user}));
+                        history.push("/profile")
+                        return user;
                     }
                 })
-                console.log(userInfo)
-                setUserObject(userInfo[0]);
-                setUserData({user:userInfo[0]})
-                history.push("/profile")
+                
             })
             .catch((err) => {
                 console.log(err);
@@ -136,6 +139,7 @@ export default function Login() {
       const classes = useStyles();
 
     return (
+    
         <Container>
             <CssBaseline/>
             <div className={classes.paper}>
@@ -184,6 +188,7 @@ export default function Login() {
                     </Button>
                 </form>
             </div>
+        
             <Box mt={8}>
                 <Copyright />
             </Box>
