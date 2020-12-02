@@ -25,10 +25,26 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log('Established connection with MongoDB database.')
+  console.log('Established connection with MongoDB database.')
 });
 
+
 // Start the API server
-app.listen(PORT, function() {
+const server = app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST']
+  }
+});
+
+io.on('connection', socket => {
+  socket.on('message', ({name, message}) => {
+    io.emit('message', {name, message})
+  })
+})
