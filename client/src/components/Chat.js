@@ -4,6 +4,10 @@ import TextField from "@material-ui/core/TextField";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles'
 
+
+//Nav
+import Navbar from './Navbar';
+
 const socket = io.connect('http://localhost:3001/');
 
 const useStyles = makeStyles(theme => ({
@@ -68,6 +72,7 @@ function Chat() {
 
     return (
         <div>
+            <Navbar/>
             <Typography className={classes.title} variant='h2' align="center">
                 Chat
             </Typography>

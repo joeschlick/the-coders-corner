@@ -8,11 +8,14 @@ import {
     TextField,
     Box,
     Typography,
-    Container 
+    Container,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useHistory } from 'react-router-dom';
+
+//Login - Signup Navbar
+import LoginSignupNav from './LoginSignupNav';
 
 
 export default function Login() {
@@ -139,8 +142,9 @@ export default function Login() {
       const classes = useStyles();
 
     return (
-    
-        <Container>
+
+        <>
+            <LoginSignupNav/>
             <CssBaseline/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -196,7 +200,7 @@ export default function Login() {
             {/* <Profile userName={userObject.userName} firstName={userObject.firstName} lastName={userObject.lastName} key={formObject._id}/> */}
 
 
-        </Container>
+        </>
     )
 }
 

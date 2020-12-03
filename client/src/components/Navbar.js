@@ -52,11 +52,6 @@ const menuItems = [
         listPath: "/editor"
     },
     {
-        listIcon: <ExitToApp />,
-        listText: "Sign Up",
-        listPath: "/"
-    },
-    {
         listIcon: <LockOpen />,
         listText: "Logout",
         listPath: "/login"

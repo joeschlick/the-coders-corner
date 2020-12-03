@@ -9,6 +9,9 @@ import {
 import API from "../utils/API";
 
 
+//Nav
+import Navbar from './Navbar';
+
 
 const useStyles = makeStyles(theme => ({
     title:{
@@ -65,6 +68,7 @@ export default function HackHub() {
 
     return (
         <div>
+            <Navbar/>
             {console.log(userData)}
             <Typography className={classes.title} variant='h2' align="center">
                 HackHub
