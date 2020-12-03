@@ -4,16 +4,27 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
     title:{
-        marginBottom: 10
+        marginBottom: 10,
+        fontWeight: "bold"
     },
     containers: {
-        background: "#CACACA",
+        backgroundColor: "rgba(38,50,56,0.9)",
+        color: "white",
         padding: 25,
         paddingLeft: 35,
         paddingRight: 35,
         paddingBottom: 35,
         margin: 20,
-        borderRadius: 25
+        marginLeft: '5%',
+        marginRight: '5%',
+        borderRadius: 25,
+        lineHeight: 2
+    },
+    summary: {
+        lineHeight: 1.8
+    },
+    link: {
+        color: "#5190b8"
     }
 }))
 
@@ -26,10 +37,10 @@ function NewsPost(props) {
             <Typography className={classes.title} variant="h6">
                 {props.title}
             </Typography>
-            <Typography variant="body2">
+            <Typography className={classes.summary} variant="body2">
                 {props.summary}
             </Typography>
-            <a href={props.link} target="_blank">{props.link}</a>
+            <a href={props.link} target="_blank" className={classes.link}>{props.link}</a>
         </div>
     )
 }
