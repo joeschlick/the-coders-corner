@@ -37,7 +37,7 @@ module.exports = {
     //Update a User
     update: (req, res) => {
         db.User
-            .findOneAndUpdate({_id: req.params.id}, req.body)
+            .findOneAndUpdate({_id: req.params.id}, {"$push": req.body})
             .then((users) => {
                 res.json(users);
             })

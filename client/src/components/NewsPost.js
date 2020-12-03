@@ -29,6 +29,7 @@ function NewsPost(props) {
             <Typography variant="body2">
                 {props.summary}
             </Typography>
+            <a href={props.link} target="_blank">{props.link}</a>
         </div>
     )
 }

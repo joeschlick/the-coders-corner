@@ -1,8 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import './editor/style.css';
 import EditorComponent from './editor/Editor';
 import useLocalStorage from './editor/hooks/useLocalStorage';
+
+//Nav
+import Navbar from './Navbar';
 
 function Editor() {
 
@@ -28,6 +30,7 @@ function Editor() {
 
     return (
         <>
+        <Navbar/>
         <div style={{display: "flex", flexDirection: "row"}}>
             <div className="pane top-pane">
                 <EditorComponent

@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-title {
+  font-family: 'Major Mono Display', monospace;
+}
+
+body {
+  background-image: url("../src/images/vectorbackground.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color:#464646;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+

@@ -12,6 +12,9 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 
+//Login - Signup Navbar
+import LoginSignupNav from './LoginSignupNav';
+
 export default function Signup() {
     const [users, setUsers] = useState([]);
     const [formObject, setFormObject] = useState([]);
@@ -95,7 +98,8 @@ export default function Signup() {
           const classes = useStyles();
 
     return (
-        <Container>
+        <>
+            <LoginSignupNav/>
             <CssBaseline/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -114,7 +118,7 @@ export default function Signup() {
                         onChange={handleInputChange}
                         name="firstName"
                         autoFocus
-                        label="Fist Name"
+                        label="First Name"
                     />
                     <TextField
                         variant="outlined"
@@ -211,6 +215,6 @@ export default function Signup() {
 
                 </form>
             </div>
-        </Container>
+        </>
     )
 }
