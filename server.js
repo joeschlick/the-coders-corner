@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require('body-parser');
+const passport = require('passport');
 require('dotenv').config();
 
 const mongoose = require("mongoose");
@@ -11,12 +13,31 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+
+// tell the app to parse HTTP body messages
+app.use(bodyParser.urlencoded({ extended: false }));
+// pass the passport middleware
+app.use(passport.initialize());
+
+// load passport strategies
+const localSignupStrategy = require('./passport/local-signup');
+const localLoginStrategy = require('./passport/local-login');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
+
+// pass the authenticaion checker middleware
+//const authCheckMiddleware = require('./middleware/auth-check');
+//app.use('/api', authCheckMiddleware);
+
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
 app.use(routes);
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
 
 // Connect to the Mongo DB
 const uri = process.env.ATLAS_URI;

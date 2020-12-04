@@ -53,7 +53,7 @@ export default function Signup() {
     function handleFormSubmit(e){
         e.preventDefault();
         if(formObject.firstName && formObject.lastName && formObject.userName && formObject.password && formObject.email && formObject.jobTitle){
-            API.saveUser({
+            API.signupUser({
                 firstName: formObject.firstName,
                 lastName: formObject.lastName,
                 userName: formObject.userName,

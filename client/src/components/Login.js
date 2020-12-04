@@ -61,7 +61,7 @@ export default function Login() {
                         return user;
                     }
                 })
-                
+                pass
             })
             .catch((err) => {
                 console.log(err);

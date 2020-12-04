@@ -12,7 +12,7 @@ router
     .route('/add')
     .post(usersController.create);
 
-    //POST:
+    //POST: localhost:3001/api/users/authenticate
 router
     .route('/authenticate')
     .post(usersController.authenticate);
