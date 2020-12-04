@@ -82,6 +82,8 @@ export default function HackHub() {
     }
   }
 
+
+
   return (
     <div>
       <Navbar />
@@ -117,6 +119,11 @@ export default function HackHub() {
             >
                 Submit
             </Button>
+            {users.map((user) => (
+                <div>
+                    {user.posts}
+                </div>
+            ))}
             </form>
         </Paper>
         </div>
