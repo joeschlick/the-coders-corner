@@ -39,11 +39,13 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 30
     },
     formContainer: {
+        // margin: "auto",
+        justifyContent: "center",
         display: "flex"
     },
     form: {
         width: '70vh',
-        height: '28vh',
+        height: '215px',
         display: 'flex',
         flexDirection: 'column',
         borderRadius: 20,
@@ -51,20 +53,22 @@ const useStyles = makeStyles(theme => ({
         // backgroundColor: '#737578',
         marginLeft: "40px",
         marginRight: "20px",
-        padding: "30px"
+        padding: "30px",
+        maxWidth: "320px"
     },
     sendTitle: {
         color: "#E0E0E0"
     },
     chatLog: {
-        width: '100vh',
-        height: '80vh',
+        width: '100vw',
+        height: '60vh',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '3px 2px 5px rgba(0,0,0,.26)',
+        // boxShadow: '3px 2px 5px rgba(0,0,0,.26)',
         borderRadius: 20,
         backgroundColor: '#E0E0E0',
-
+        marginRight: "40px",
+        maxWidth: "600px"
     },
     chatLogTitle: {
         margin: 0,
@@ -86,7 +90,8 @@ const useStyles = makeStyles(theme => ({
         margin: '7px'
     },
     messageContainer: {
-        padding: "20px"
+        padding: "20px",
+        overflow: "auto"
     },
     userName: {
         fontWeight: 'bold'
@@ -108,6 +113,11 @@ function Chat() {
         })
     })
 
+    function updateScroll(){
+        var element = document.getElementById("messageContainer");
+        element.scrollTop = element.scrollHeight;
+    }
+
     const onTextChange = event => {
         setState({...state, [event.target.name]: event.target.value})
     }
@@ -126,6 +136,7 @@ function Chat() {
         return chat.map(({name, message}, index) => (
             <div key={index}>
                 <Typography variant="subtitle1" className={classes.message}><span className={classes.userName}>{name}:</span> <span>{message}</span></Typography>
+                {updateScroll()}
             </div>
         ))
     }
@@ -167,7 +178,7 @@ function Chat() {
                 
                 <div className={classes.chatLog}>
                     <Typography className={classes.chatLogTitle} variant="h5">Live Message Board</Typography>
-                    <div className={classes.messageContainer}>
+                    <div className={classes.messageContainer} id="messageContainer">
                         {renderChat()}
                     </div>
                 </div>  
