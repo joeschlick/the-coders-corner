@@ -7,7 +7,8 @@ import {
     CssBaseline, 
     TextField, 
     Typography,
-    Container 
+    Container,
+    Paper
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ExitToApp from '@material-ui/icons/ExitToApp';
@@ -64,7 +65,8 @@ export default function Signup() {
                 jobTitle: formObject.jobTitle
             })
             .then((res) => {
-                loadUsers();
+                // loadUsers();
+                console.log(res);
             })
             .catch((err) => console.log(err));
             console.log(formObject);
@@ -79,17 +81,19 @@ export default function Signup() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              width: '50%',
+                margin: 'auto',
+                backgroundColor: "#edf6f9"
             },
             avatar: {
               margin: theme.spacing(1),
-              backgroundColor: "#457b9d",
+              backgroundColor: "#db7500",
             },
             form: {
-              width: '60%', // Fix IE 11 issue.
               marginTop: theme.spacing(1),
             },
             submit: {
-              margin: theme.spacing(3, 0, 2),
+              margin: theme.spacing(3, 0, 5),
               background: "#457b9d",
               color: "white"
             },
@@ -101,6 +105,7 @@ export default function Signup() {
         <>
             <LoginSignupNav/>
             <CssBaseline/>
+            <Paper className={classes.paper} elevation={8}>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <ExitToApp />
@@ -215,6 +220,7 @@ export default function Signup() {
 
                 </form>
             </div>
+            </Paper>
         </>
     )
 }
