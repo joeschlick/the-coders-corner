@@ -7,6 +7,10 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 10,
         fontWeight: "bold"
     },
+    bigContainer: {
+        display: "flex",
+        justifyContent: "center"
+    },
     containers: {
         backgroundColor: "rgba(38,50,56,0.9)",
         color: "white",
@@ -18,12 +22,18 @@ const useStyles = makeStyles(theme => ({
         marginLeft: '5%',
         marginRight: '5%',
         borderRadius: 25,
-        lineHeight: 2
+        lineHeight: 2,
+        maxWidth: "1100px",
     },
     summary: {
-        lineHeight: 1.8
+        lineHeight: 1.8,
     },
     link: {
+        // display: "inlineBlock",
+        overflowWrap: "normal",
+        // wordWrap: "break-word",
+        // wordBreak: "normal",
+        // whiteSpace: "normal",
         color: "#5190b8"
     }
 }))
@@ -32,15 +42,17 @@ const useStyles = makeStyles(theme => ({
 function NewsPost(props) {
     let classes = useStyles();
     return (
-        <div className={classes.containers}>
-            <p>{props.date}</p>
-            <Typography className={classes.title} variant="h6">
-                {props.title}
-            </Typography>
-            <Typography className={classes.summary} variant="body2">
-                {props.summary}
-            </Typography>
-            <a href={props.link} target="_blank" className={classes.link}>{props.link}</a>
+        <div className={classes.bigContainer}>
+            <div className={classes.containers}>
+                <p>{props.date}</p>
+                <Typography className={classes.title} variant="h6">
+                    {props.title}
+                </Typography>
+                <Typography className={classes.summary} variant="body2">
+                    {props.summary}
+                </Typography>
+                <a href={props.link} target="_blank" className={classes.link}>{props.link}</a>
+            </div>
         </div>
     )
 }
