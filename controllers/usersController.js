@@ -15,7 +15,7 @@ module.exports = {
   },
   //Get User by Id
   findById: (req, res) => {
-    db.User.findById(req, params.id)
+    db.User.findById(req.params.id)
       .then((users) => {
         res.json(users);
       })
