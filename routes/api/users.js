@@ -12,6 +12,11 @@ router
     .route('/add')
     .post(usersController.create);
 
+    //POST: localhost:3001/api/users/authenticate
+router
+    .route('/authenticate')
+    .post(usersController.authenticate);
+
 //GET: localhost:3001/api/users/:id
 router 
     .route('/:id')
@@ -26,5 +31,7 @@ router
 router
     .route('/delete/:id')
     .delete(usersController.remove);
+
+
 
 module.exports = router;
