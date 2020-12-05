@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HackHub() {
   let classes = useStyles();
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState({});
   const { userData } = useContext(UserContext);
   const [formObject, setFormObject] = useState([]);
 
@@ -51,11 +51,14 @@ export default function HackHub() {
     API.getUsers()
       .then((res) => {
         setUsers(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
+  loadUsers();
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -119,6 +122,7 @@ export default function HackHub() {
             >
                 Submit
             </Button>
+            {console.log(users)}
             {users.map((user) => (
                 <div>
                     {user.posts}
