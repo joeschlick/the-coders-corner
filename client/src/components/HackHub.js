@@ -116,6 +116,7 @@ export default function HackHub() {
         })
         .catch((err) => console.log(err));
     }
+    window.location.reload();
   }
 
 
