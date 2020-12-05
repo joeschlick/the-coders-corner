@@ -21,14 +21,9 @@ function validateSignupForm(payload) {
     errors.email = 'Please provide a correct email address.';
   }
 
-  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
+  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 4) {
     isFormValid = false;
     errors.password = 'Password must have at least 8 characters.';
-  }
-
-  if (!payload || typeof payload.firstName !== 'string' || payload.firstName.trim().length === 0) {
-    isFormValid = false;
-    errors.firstName = 'Please provide your firstName.';
   }
 
   if (!isFormValid) {
@@ -76,8 +71,11 @@ function validateLoginForm(payload) {
 }
 
 router.post('/signup', (req, res, next) => {
+  console.log('in auth route');
   const validationResult = validateSignupForm(req.body);
+  console.log("backend", req.body);
   if (!validationResult.success) {
+    console.log("validation failed");
     return res.status(400).json({
       success: false,
       message: validationResult.message,
@@ -87,8 +85,9 @@ router.post('/signup', (req, res, next) => {
 
 
   return passport.authenticate('local-signup', (err) => {
+    console.log('passport authenticate signup');
     if (err) {
-      if (err.firstName === 'MongoError' && err.code === 11000) {
+      if (err.name === 'MongoError' && err.code === 11000) {
         // the 11000 Mongo code is for a duplication email error
         // the 409 HTTP status code is for conflict error
         return res.status(409).json({
@@ -114,6 +113,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+  console.log('in the login');
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({

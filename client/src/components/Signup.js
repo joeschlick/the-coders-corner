@@ -65,12 +65,10 @@ export default function Signup() {
                 jobTitle: formObject.jobTitle
             })
             .then((res) => {
-                // loadUsers();
-                console.log(res);
+                history.push("/login")
             })
             .catch((err) => console.log(err));
-            console.log(formObject);
-            history.push("/login")
+ 
         }
     }
 

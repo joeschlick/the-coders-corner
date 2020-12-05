@@ -10,7 +10,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
@@ -35,9 +34,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
 app.use(routes);
 
 // Connect to the Mongo DB
