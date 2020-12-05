@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -42,14 +42,14 @@ const useStyles = makeStyles({
   
 
 export default function Profile() {
-    const [post, setPost] = useState({});
+    const [post, setPost] = useState([]);
     const classes = useStyles();
 
     function loadUsers(){
       API.getUser(userInfo.user._id)
           .then((res) => {
-             setPost(res.data);
-              console.log(res.data);
+             setPost(res.data.posts);
+              console.log(res.data.posts);
           })
           .catch((err) => {
               console.log(err);
@@ -58,10 +58,11 @@ export default function Profile() {
 
   let getUser = localStorage.getItem("user");
   let userInfo = JSON.parse(getUser);
-  loadUsers();
-  let postArray = [userInfo.user.posts];
   console.log(post);
 
+  useEffect(() => {
+    loadUsers()
+  },[])
 
     const { userData } = useContext(UserContext);
     return (
@@ -115,6 +116,7 @@ export default function Profile() {
                     @{userInfo.user.userName}'s Posts:
                     </Typography>
                     <div>
+                    {console.log(post)}
                       {post.map((p) => 
                        (
                         <div className={classes.postStyles} key={p._id}>

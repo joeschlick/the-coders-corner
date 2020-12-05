@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import UserContext from "../context/UserContext";
 import {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HackHub() {
   let classes = useStyles();
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
   const { userData } = useContext(UserContext);
   const [formObject, setFormObject] = useState([]);
 
@@ -50,15 +50,47 @@ export default function HackHub() {
   function loadUsers() {
     API.getUsers()
       .then((res) => {
-        setUsers(res.data);
+        // setUsers(res.user);
         console.log(res.data);
+        let allPosts = []
+        res.data.map((p) => {
+          if (p.posts.length === 0) {
+            return 
+          } else {
+            // return (
+            //     <div>
+            //     {p.posts.map((i) => (
+            //       <ul key={i._id}>
+            //         <li>
+            //           {i.user}
+            //         </li>
+            //         <li>
+            //           {i.post}
+            //         </li>
+            //       </ul>)
+            //   )}
+            //     </div>
+            // )
+          p.posts.map((i) => {
+            console.log(i);
+            allPosts.push(i)
+            console.log(allPosts);
+          })}
+        })
+        allPosts = allPosts.sort(function(a,b){
+          return new Date(b.time) - new Date(a.time);
+          });
+        
+        setUsers(allPosts);
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  loadUsers();
+  useEffect(() => {
+    loadUsers()
+  },[])
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -71,6 +103,7 @@ export default function HackHub() {
       API.updateUser(userInfo.user._id, {
         posts: [
           {
+            user: userInfo.user.userName,
             post: formObject.post,
             likes: 0,
           },
@@ -125,7 +158,12 @@ export default function HackHub() {
             {console.log(users)}
             {users.map((user) => (
                 <div>
-                    {user.posts}
+                <Paper elevation={5}>
+                  <h3>{user.user}</h3>
+                  <p>Posts: {user.post}</p>
+                  <p>Likes: {user.likes}</p>
+                  <p>Date: {user.time}</p>
+                  </Paper>
                 </div>
             ))}
             </form>

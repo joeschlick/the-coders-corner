@@ -43,6 +43,9 @@ const userSchema = new Schema({
     required: true 
   },
   posts:[{
+    user: {
+      type: String,
+    },
     post:{
       type: String,
     },
