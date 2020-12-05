@@ -55,6 +55,7 @@ export default function Login() {
                 console.log(res);
                  // save the token
                 Auth.authenticateUser(res.data.token);
+                localStorage.setItem('user', JSON.stringify(res.data.user) )
                 history.push("/profile")
             })
             .catch((err) => {
