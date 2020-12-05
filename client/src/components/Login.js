@@ -16,6 +16,7 @@ import { useHistory } from 'react-router-dom';
 
 //Login - Signup Navbar
 import LoginSignupNav from './LoginSignupNav';
+import Auth from '../Auth';
 
 
 export default function Login() {
@@ -45,23 +46,15 @@ export default function Login() {
     function handleFormSubmit(e){
         e.preventDefault();
         if(formObject.password && formObject.email){
-            API.getUsers()
+            API.loginUser({
+                password:formObject.password, 
+                email: formObject.email
+            })
             .then((res) => {
-                // getUsers(res.data);
-                console.log(res.data);
-                localStorage.clear();
-                let allUsers = res.data;
-                allUsers.filter(user => {
-                    if (user.email === formObject.email && user.password === formObject.password) {
-                        console.log(user);
-                        setUserObject(user);
-                        setUserData({user:user})
-                        localStorage.setItem("user", JSON.stringify({user: user}));
-                        history.push("/profile")
-                        return user;
-                    }
-                })
-                pass
+                console.log(res);
+                 // save the token
+                Auth.authenticateUser(res.data.token);
+                history.push("/profile")
             })
             .catch((err) => {
                 console.log(err);

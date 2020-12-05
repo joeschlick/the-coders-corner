@@ -10,7 +10,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
@@ -36,8 +35,6 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
 
 // Connect to the Mongo DB
 const uri = process.env.ATLAS_URI;
