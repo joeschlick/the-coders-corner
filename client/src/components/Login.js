@@ -9,6 +9,7 @@ import {
     Box,
     Typography,
     Container,
+    Paper,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -16,6 +17,7 @@ import { useHistory } from 'react-router-dom';
 
 //Login - Signup Navbar
 import LoginSignupNav from './LoginSignupNav';
+import Auth from '../Auth';
 
 
 export default function Login() {
@@ -45,23 +47,16 @@ export default function Login() {
     function handleFormSubmit(e){
         e.preventDefault();
         if(formObject.password && formObject.email){
-            API.getUsers()
+            API.loginUser({
+                password:formObject.password, 
+                email: formObject.email
+            })
             .then((res) => {
-                // getUsers(res.data);
-                console.log(res.data);
-                localStorage.clear();
-                let allUsers = res.data;
-                allUsers.filter(user => {
-                    if (user.email === formObject.email && user.password === formObject.password) {
-                        console.log(user);
-                        setUserObject(user);
-                        setUserData({user:user})
-                        localStorage.setItem("user", JSON.stringify({user: user}));
-                        history.push("/profile")
-                        return user;
-                    }
-                })
-                
+                console.log(res);
+                 // save the token
+                Auth.authenticateUser(res.data.token);
+                localStorage.setItem('user', JSON.stringify(res.data.user) )
+                history.push("/profile")
             })
             .catch((err) => {
                 console.log(err);
@@ -123,29 +118,33 @@ export default function Login() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          width: '50%',
+          margin: 'auto',
+          backgroundColor: "#edf6f9"
         },
         avatar: {
           margin: theme.spacing(1),
-          backgroundColor: "#457b9d",
+          backgroundColor: "#db7500",
         },
         form: {
-          width: '60%', // Fix IE 11 issue.
           marginTop: theme.spacing(1),
         },
         submit: {
           margin: theme.spacing(3, 0, 2),
           background: "#457b9d",
           color: "white"
-        },
+        }
+        
       }));
 
       const classes = useStyles();
 
     return (
-    
+
         <>
             <LoginSignupNav/>
             <CssBaseline/>
+            <Paper className={classes.paper} elevation={8}>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
@@ -196,10 +195,8 @@ export default function Login() {
             <Box mt={8}>
                 <Copyright />
             </Box>
-
-            {/* <Profile userName={userObject.userName} firstName={userObject.firstName} lastName={userObject.lastName} key={formObject._id}/> */}
-
-
+            <br></br>
+            </Paper>
         </>
     )
 }
