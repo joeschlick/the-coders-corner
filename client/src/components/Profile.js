@@ -8,8 +8,16 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import UserContext from '../context/UserContext';
 import API from "../utils/API";
+
 //Nav 
 import Navbar from './Navbar';
+
+// Job title icons
+import defaultIcon from '../images/default.png';
+import developerIcon from '../images/developer.png';
+import engineerIcon from '../images/engineer.png';
+import itIcon from '../images/IT.png';
+import securityIcon from '../images/security.png';
 
 
 const useStyles = makeStyles({
@@ -24,7 +32,10 @@ const useStyles = makeStyles({
       backgroundColor: "#fff",
       border: "solid 1px black",
       listStyle: "none",
-
+    },
+    jobIcon: {
+      width : "40%",
+      height: "75%"
     }
   });
 
@@ -78,7 +89,19 @@ export default function Profile() {
                         <i class="fas fa-id-badge"></i> {userInfo.user.userName}
                         </Typography>
                         <br></br>
-                        <img alt="" class="profile-picture" src="https://via.placeholder.com/200"></img>
+                        <img alt="user-icon" class="profile-picture" className={classes.jobIcon}
+                        src={
+                          userInfo.user.jobTitle === 'developer' || userInfo.user.jobTitle === 'Developer' ?
+                          developerIcon :
+                          userInfo.user.jobTitle === 'engineer' || userInfo.user.jobTitle === 'Engineer' ?
+                          engineerIcon :
+                          userInfo.user.jobTitle === 'IT' || userInfo.user.jobTitle === 'it' ?
+                          itIcon :
+                          userInfo.user.jobTitle === 'security' || userInfo.user.jobTitle === 'Security' ?
+                          securityIcon : 
+                          defaultIcon
+                          }
+                          ></img>
                         </CardContent>
                     </Card>  
                 </Grid>
