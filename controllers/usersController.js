@@ -47,10 +47,8 @@ module.exports = {
     db.User.findOneAndUpdate({ 
       "_id": req.params.userID, 
       "posts._id": req.params.postID, 
-      {'$set': {'posts.$.likes': req.params.likes}}
+      '$set': {'posts.$.likes': req.params.likes}
 })
-
-
       .then((users) => {
         res.json(users);
       })
