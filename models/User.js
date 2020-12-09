@@ -43,8 +43,11 @@ const userSchema = new Schema({
     required: true 
   },
   posts:[{
-    user: {
+    user:{
       type: String,
+    },
+    userID:{
+      type: String, 
     },
     post:{
       type: String,
@@ -56,7 +59,7 @@ const userSchema = new Schema({
       type: Date,
       default: Date.now
     }
-  }]
+}]
 });
 
 // hash user password before saving into database

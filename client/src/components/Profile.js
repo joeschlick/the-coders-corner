@@ -10,6 +10,7 @@ import UserContext from '../context/UserContext';
 import API from "../utils/API";
 //Nav 
 import Navbar from './Navbar';
+import { Paper, Button } from '@material-ui/core';
 
 
 const useStyles = makeStyles({
@@ -22,23 +23,13 @@ const useStyles = makeStyles({
     },
     postStyles: {
       backgroundColor: "#fff",
-      border: "solid 1px black",
-      listStyle: "none",
-
-    }
+      padding: "10px",
+      margin: "5px",
+    },
+    listItem: {
+      listStyleType: "none",
+    },  
   });
-
-  // const LikeCounter = () => {
-  //   const [{post.likes}, setLikes] = useState(0)
-
-  //   increaseLikes = () => {
-  //     setLikes({posts.likes} + 1)
-  //   }
-
-  //   handleLike
-  // }
-
-
   
 
 export default function Profile() {
@@ -56,9 +47,12 @@ export default function Profile() {
           })
   }
 
+  
+
   let getUser = localStorage.getItem("user");
   let userInfo = JSON.parse(getUser);
   console.log(post);
+  let githubLink = `https://github.com/${userInfo.user.github}`;
 
   useEffect(() => {
     loadUsers()
@@ -69,24 +63,15 @@ export default function Profile() {
       <div>
         <Navbar/>
           <Container>
-            {/* User's username and avatar */}
             <Grid container justify="center">
                 <Grid item xs={12} sm={6}>
-                    <Card className={classes.cardStyles} style={{ height:350, width:"90%"}}>
+                    <Card className={classes.cardStyles} style={{width:"90%"}}>
                         <CardContent>
                         <Typography variant="h4" component="h2">
                         <i class="fas fa-id-badge"></i> {userInfo.user.userName}
                         </Typography>
                         <br></br>
                         <img alt="" class="profile-picture" src="https://via.placeholder.com/200"></img>
-                        </CardContent>
-                    </Card>  
-                </Grid>
-
-            {/* User's profile information with links to websites */}
-                <Grid item xs={12} sm={6}>
-                    <Card className={classes.cardStyles} style={{ height:350, width:"90%"}}>
-                    <CardContent>
                         <Typography variant="h4">
                         {userInfo.user.firstName} {userInfo.user.lastName} 
                         </Typography>
@@ -98,40 +83,38 @@ export default function Profile() {
                           Contact Me:
                         </Typography>
                         <Typography variant="h6">
-                        <Link href="#"><i class="fab fa-github-square"></i> GitHub: {userInfo.user.github}</Link>
+                        <Link href={githubLink}><i class="fab fa-github-square"></i> GitHub: {userInfo.user.github}</Link>
                         <br></br>
-                          <Link href="#"><i class="fab fa-linkedin"></i> Linkedin: {userInfo.user.linkedin}</Link>
+                          <Link href={userInfo.user.linkedin}><i class="fab fa-linkedin"></i> Linkedin: {userInfo.user.linkedin}</Link>
                         <br></br>
                           <Link href="#"><i class="fas fa-envelope-square"></i> Email: {userInfo.user.email}</Link>
                         <br></br>
                         </Typography>
-                  </CardContent>
-              </Card> 
+                        </CardContent>
+                    </Card>  
                 </Grid>
-            </Grid>
 
-              <Card className={classes.cardStyles}>
-                <CardContent>
-                    <Typography variant="h5" component="h2">
+                <Grid item xs={12} sm={6}>
+                    <Card className={classes.cardStyles} style={{width:"90%"}}>
+                    <CardContent>
+                    <div>
+                    <Typography variant="h4">
                     @{userInfo.user.userName}'s Posts:
                     </Typography>
-                    <div>
-                    {console.log(post)}
                       {post.map((p) => 
                        (
                         <div className={classes.postStyles} key={p._id}>
                         {console.log(p)}
-                          <ul>
-                          <li>Post: {p.post}</li>
-                             <li>Likes: {p.likes}</li> 
-                             <li>Time: {p.time}</li> 
-                          </ul>
-                          <button><i class="fas fa-thumbs-up"></i>Like </button>
+                          <h3>{p.post}</h3>
+                          <p>Likes: {p.likes}</p>
+                          <p>{p.time}</p>
+                          
                           </div>))}
-                         
                     </div>
                   </CardContent>
-                </Card> 
+              </Card> 
+                </Grid>
+            </Grid>
               </Container>
           </div>
       );

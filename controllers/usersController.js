@@ -43,7 +43,22 @@ module.exports = {
         if (err) throw err;
       });
   },
-  // Delete a User
+  updateLikes: (req, res) => {
+    db.User.findOneAndUpdate({ 
+      "_id": req.params.userID, 
+      "posts._id": req.params.postID, 
+      {'$set': {'posts.$.likes': req.params.likes}}
+})
+
+
+      .then((users) => {
+        res.json(users);
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  },
+
   remove: (req, res) => {
     db.User.findById({ _id: req.params.id })
       .then((users) => {

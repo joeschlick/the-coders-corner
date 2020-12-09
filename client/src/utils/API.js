@@ -13,6 +13,10 @@ export default {
     return axios.post("/auth/signup", body);
   },
 
+  updateLikes: function(userID, postID, likes) {
+    return axios.put("/api/users/updateLikes/" + userID, postID, likes);
+  },
+
   loginUser: function(body) {
     return axios.post("/auth/login", body);
   },
@@ -26,7 +30,6 @@ export default {
   },
 
   updateUser: function(id, data) {
-    console.log(id)
     return axios.put("/api/users/update/" + id, data);
   },
 

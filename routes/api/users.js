@@ -32,6 +32,8 @@ router
     .route('/delete/:id')
     .delete(usersController.remove);
 
-
+router
+    .route('/updateLikes/:userID')
+    .put(usersController.updateLikes);
 
 module.exports = router;
