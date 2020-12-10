@@ -19,16 +19,26 @@ const useStyles = makeStyles({
       display:'flex', 
       justifyContent:'center',
       textAlign: "center",
-      backgroundColor: "#edf6f9"
+      backgroundColor: "#edf6f9",
+      borderRadius: "15px",
+      border: "solid 1.5px" 
     },
     postStyles: {
       backgroundColor: "#fff",
-      padding: "10px",
-      margin: "5px",
+      padding: "15px",
+      margin: "10px",
+      borderRadius: "25px",
+      border: "solid 1.5px"
     },
     listItem: {
       listStyleType: "none",
-    },  
+    },
+    span: {
+      backgroundColor: "#db7500",
+      borderRadius: "5px",
+      color: "#fff",
+      padding: "1px"
+    }
   });
   
 
@@ -67,12 +77,14 @@ export default function Profile() {
                 <Grid item xs={12} sm={6}>
                     <Card className={classes.cardStyles} style={{width:"90%"}}>
                         <CardContent>
-                        <Typography variant="h4" component="h2">
+                        <Typography variant="h1" class="coders-font">
                         <i class="fas fa-id-badge"></i> {userInfo.user.userName}
                         </Typography>
                         <br></br>
                         <img alt="" class="profile-picture" src="https://via.placeholder.com/200"></img>
-                        <Typography variant="h4">
+                        <br></br>
+                        <br></br>
+                        <Typography variant="h5">
                         {userInfo.user.firstName} {userInfo.user.lastName} 
                         </Typography>
                         <Typography variant="h6">
@@ -98,15 +110,16 @@ export default function Profile() {
                     <Card className={classes.cardStyles} style={{width:"90%"}}>
                     <CardContent>
                     <div>
-                    <Typography variant="h4">
-                    @{userInfo.user.userName}'s Posts:
+                    <Typography variant="h1" class="coders-font">
+                    @{userInfo.user.userName}'s 
+                    <br></br>
+                    Corner:
                     </Typography>
                       {post.map((p) => 
                        (
                         <div className={classes.postStyles} key={p._id}>
-                        {console.log(p)}
+                          <div className={classes.span}><i class="fas fa-code"></i></div>
                           <h3>{p.post}</h3>
-                          <p>Likes: {p.likes}</p>
                           <p>{p.time}</p>
                           
                           </div>))}

@@ -8,10 +8,15 @@ import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles(theme => ({
     title:{
         marginTop: 25,
-        marginBottom: 10
+        marginBottom: 10,
+        fontSize: "6vw",
+        fontFamily: "'Major Mono Display', monospace",
+        color: "#db7500"
     },
     headline: {
-        marginBottom: 30
+        marginBottom: 30,
+        fontSize: "3vw",
+        fontFamily: "'Major Mono Display', monospace",
     }
 }))
 

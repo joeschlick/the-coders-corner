@@ -33,7 +33,7 @@ export default function LoginSignupNav(){
                 <AppBar position="static" style={{background: "#457b9d"}}>
                     <Toolbar>
                         <i class="fab fa-connectdevelop fa-3x"></i>
-                        <Typography class="navbar-title" variant="h1" style={{color: "white", marginLeft: "10px", flexGrow: 1}}>
+                        <Typography class="coders-font" variant="h1" style={{color: "white", marginLeft: "10px", flexGrow: 1}}>
                             Coder's Corner
                         </Typography>
                         <Button className={classes.button} onClick={login}>
