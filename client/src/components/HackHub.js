@@ -47,34 +47,18 @@ export default function HackHub() {
   let getUser = localStorage.getItem("user");
   let userInfo = JSON.parse(getUser);
 
+
   function loadUsers() {
     API.getUsers()
       .then((res) => {
-        // setUsers(res.user);
-        console.log(res.data);
+        console.log("response from get users", res)
         let allPosts = []
         res.data.map((p) => {
           if (p.posts.length === 0) {
             return 
           } else {
-            // return (
-            //     <div>
-            //     {p.posts.map((i) => (
-            //       <ul key={i._id}>
-            //         <li>
-            //           {i.user}
-            //         </li>
-            //         <li>
-            //           {i.post}
-            //         </li>
-            //       </ul>)
-            //   )}
-            //     </div>
-            // )
           p.posts.map((i) => {
-            console.log(i);
             allPosts.push(i)
-            console.log(allPosts);
           })}
         })
         allPosts = allPosts.sort(function(a,b){
@@ -104,14 +88,13 @@ export default function HackHub() {
         posts: [
           {
             user: userInfo.user.userName,
+            userID: userInfo.user._id,
             post: formObject.post,
             likes: 0,
           },
         ],
       })
         .then((res, req) => {
-          console.log(formObject.post);
-          console.log(res.data);
           loadUsers();
         })
         .catch((err) => console.log(err));
@@ -119,12 +102,25 @@ export default function HackHub() {
     window.location.reload();
   }
 
+  function handleLike(userID, postID, likes) {
+    console.log("handleLike has been clicked");
+    likes+=1
+    console.log(likes);
+    // API.updateUser(userID, ({"$set": {"posts[2].$.likes": likes}})
+    API.updateLikes(userID, postID, {likes: likes}).then(res => {
+      console.log("calling updatelikes API")
+      loadUsers();
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
 
 
   return (
     <div>
       <Navbar />
-      {console.log(userData)}
       <CssBaseline />
       <Paper className={classes.paper}>
       <Typography className={classes.title} variant="h2" align="center">
@@ -156,7 +152,6 @@ export default function HackHub() {
             >
                 Submit
             </Button>
-            {console.log(users)}
             {users.map((user) => (
                 <div>
                 <Paper elevation={5}>
@@ -164,6 +159,7 @@ export default function HackHub() {
                   <p>Posts: {user.post}</p>
                   <p>Likes: {user.likes}</p>
                   <p>Date: {user.time}</p>
+                  <Button size="small" variant="outlined" color="primary" onClick={() => handleLike(user.userID, user._id, user.likes)}><i class="fas fa-thumbs-up"></i> Like </Button>
                   </Paper>
                 </div>
             ))}

@@ -187,7 +187,7 @@ export default function Signup() {
                         onChange={handleInputChange}
                         name="linkedin"
                         autoFocus
-                        label="Linkedin Username"
+                        label="Linkedin URL"
                     />
                     <TextField
                         variant="outlined"
