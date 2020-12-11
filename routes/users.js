@@ -70,4 +70,24 @@ router.route("/update/:id").post((req, res) => {
     });
 });
 
+router.route("/updateLikes/:userID").post((req, res) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      console.log(user);
+      posts.post = req.body.post;
+      console.log(req.body.post);
+      user
+        .save()
+        .then(() => {
+          res.json("User Updated");
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+    })
+    .catch((err) => {
+      if (err) throw err;
+    });
+});
+
 module.exports = router;

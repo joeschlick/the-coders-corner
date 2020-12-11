@@ -1,6 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   //Get all Users
@@ -43,7 +43,26 @@ module.exports = {
         if (err) throw err;
       });
   },
-  // Delete a User
+  updateLikes: (req, res) => {
+    console.log("updateLikes", req.params.postID);
+    db.User.findOneAndUpdate(
+      {
+        _id: req.params.userID,
+        "posts._id": req.params.postID,
+      },
+      {
+        $inc: { "posts.$.likes": 1 },
+      }
+    )
+      .then((users) => {
+        console.log("findOneAndUpdate");
+        res.json(users);
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  },
+
   remove: (req, res) => {
     db.User.findById({ _id: req.params.id })
       .then((users) => {
