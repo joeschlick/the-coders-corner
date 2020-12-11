@@ -10,6 +10,8 @@ import Chat from "./components/Chat";
 import Editor from "./components/Editor";
 //import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import UserProfile from "./components/UserProfile";
+
 
 //Store User that is currently logged in
 import UserContext from './context/UserContext';
@@ -31,6 +33,7 @@ function App() {
         <Route path="/chat" component={Chat}/>
         <Route path="/editor" component={Editor}/>
         <Route path="/login" component={Login}/>
+        <Route path="/userProfile" component={UserProfile}/>
       </Switch>
     </UserContext.Provider> 
     </Router>
