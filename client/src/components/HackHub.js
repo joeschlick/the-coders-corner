@@ -69,6 +69,7 @@ export default function HackHub() {
   function loadUsers() {
     API.getUsers()
       .then((res) => {
+        console.log("response from get users", res)
         let allPosts = []
         res.data.map((p) => {
           if (p.posts.length === 0) {
@@ -125,6 +126,7 @@ export default function HackHub() {
     console.log(likes);
     // API.updateUser(userID, ({"$set": {"posts[2].$.likes": likes}})
     API.updateLikes(userID, postID, {likes: likes}).then(res => {
+      console.log("calling updatelikes API")
       loadUsers();
       console.log(res)
     }).catch(err => {
