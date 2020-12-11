@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
     title:{
         marginBottom: 10,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "#db7500"
     },
     bigContainer: {
         display: "flex",

@@ -95,6 +95,9 @@ export default function Signup() {
               background: "#457b9d",
               color: "white"
             },
+            TextField: {
+                color: "#fff",
+            }
           }));
     
           const classes = useStyles();
@@ -108,12 +111,15 @@ export default function Signup() {
                 <Avatar className={classes.avatar}>
                     <ExitToApp />
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                    Signup
+                <Typography class="coders-font" component="h1" variant="h5">
+                    sign up
+                </Typography>
+                <Typography variant="p">
+                    Welcome to the Coder's Corner
                 </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         required
                         fullWidth
@@ -124,7 +130,7 @@ export default function Signup() {
                         label="First Name"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         required
                         fullWidth
@@ -135,7 +141,7 @@ export default function Signup() {
                         label="Last Name"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         required
                         fullWidth
@@ -146,7 +152,7 @@ export default function Signup() {
                         label="Username"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         required
                         fullWidth
@@ -158,7 +164,7 @@ export default function Signup() {
                         label="Password"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         required
                         fullWidth
@@ -170,7 +176,7 @@ export default function Signup() {
                         label="Email"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         fullWidth
                         id="github"
@@ -180,7 +186,7 @@ export default function Signup() {
                         label="Github Username"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         fullWidth
                         id="linkedin"
@@ -190,7 +196,7 @@ export default function Signup() {
                         label="Linkedin URL"
                     />
                     <TextField
-                        variant="outlined"
+                        variant="filled"
                         margin="normal"
                         required
                         fullWidth

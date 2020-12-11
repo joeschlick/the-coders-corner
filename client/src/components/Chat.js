@@ -33,10 +33,15 @@ const useStyles = makeStyles(theme => ({
     },
     title:{
         marginTop: 25,
-        marginBottom: 10
+        marginBottom: 10,
+        fontSize: "6vw",
+        fontFamily: "'Major Mono Display', monospace",
+        color: "#db7500"
     },
     headline: {
-        marginBottom: 30
+        marginBottom: 30,
+        fontSize: "3vw",
+        fontFamily: "'Major Mono Display', monospace",
     },
     formContainer: {
         // margin: "auto",
@@ -145,7 +150,7 @@ function Chat() {
         <div>
             <Navbar/>
             <Typography className={classes.title} variant='h2' align="center">
-                Chat
+            Chat
             </Typography>
             <Typography className={classes.headline} variant='h5' align="center">
                 Message fellow developers!
@@ -169,7 +174,7 @@ function Chat() {
                             name="message"
                             onChange={e => onTextChange(e)}
                             value={state.message}
-                            variant="outlined"
+                            variant="filled"
                             label="Message"
                         />
                     </div>
