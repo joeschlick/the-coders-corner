@@ -92,7 +92,7 @@ export default function Navbar() {
                             <MenuIcon style={{ color: "white" }}/>
                         </IconButton>
                         <i class="fab fa-connectdevelop fa-3x"></i>
-                        <Typography class="navbar-title" variant="h1" style={{color: "white", marginLeft: "10px"}}>
+                        <Typography class="coders-font" variant="h1" style={{color: "white", marginLeft: "10px"}}>
                             Coder's Corner
                         </Typography>
                         <MobileLeftMenuSlider

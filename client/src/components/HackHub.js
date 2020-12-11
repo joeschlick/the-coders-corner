@@ -17,9 +17,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: 25,
     marginBottom: 10,
+    fontSize: "6vw",
+    fontFamily: "'Major Mono Display', monospace",
+    color: "#db7500"
   },
   headline: {
     marginBottom: 30,
+    fontSize: "3vw",
+    fontFamily: "'Major Mono Display', monospace",
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -31,11 +36,24 @@ const useStyles = makeStyles((theme) => ({
     //paddingBottom: 30,
     paddingBottom: theme.spacing(8),
   },
-
+  postStyles: {
+    backgroundColor: "#fff",
+    padding: "15px",
+    margin: "10px",
+    borderRadius: "25px",
+    border: "solid 1.5px",
+    justifyContent:'center',
+    textAlign: "center",
+  },
   form: {
     width: "60%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
+  span: {
+    backgroundColor: "#db7500",
+    borderRadius: "5px",
+    color: "#fff"
+  }
 }));
 
 export default function HackHub() {
@@ -123,14 +141,13 @@ export default function HackHub() {
       <Navbar />
       <CssBaseline />
       <Paper className={classes.paper}>
-      <Typography className={classes.title} variant="h2" align="center">
+      <Typography className={classes.title} variant="h1" align="center">
         HackHub
       </Typography>
       <Typography className={classes.headline} variant="h5" align="center">
         See what the hubbub is about!
       </Typography>
-      
-            <Typography variant="h4">{userInfo.user.userName}</Typography>
+            <Typography variant="h4" className={classes.headline}>@{userInfo.user.userName}</Typography>
             <form className={classes.form} noValidate>
             <TextField
                 variant="outlined"
@@ -153,14 +170,12 @@ export default function HackHub() {
                 Submit
             </Button>
             {users.map((user) => (
-                <div>
-                <Paper elevation={5}>
-                  <h3>{user.user}</h3>
-                  <p>Posts: {user.post}</p>
+                <div className={classes.postStyles}>
+                  <h2 className={classes.span}>@{user.user}</h2>
+                  <h3>{user.post}</h3>
                   <p>Likes: {user.likes}</p>
-                  <p>Date: {user.time}</p>
+                  <p>{user.time}</p>
                   <Button size="small" variant="outlined" color="primary" onClick={() => handleLike(user.userID, user._id, user.likes)}><i class="fas fa-thumbs-up"></i> Like </Button>
-                  </Paper>
                 </div>
             ))}
             </form>
