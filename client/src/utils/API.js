@@ -13,8 +13,9 @@ export default {
     return axios.post("/auth/signup", body);
   },
 
-  updateLikes: function(userID, postID, likes) {
-    return axios.put("/api/users/updateLikes/" + userID, postID, likes);
+  updateLikes: function(userID, postID) {
+    console.log("is updatelikes working")
+    return axios.put(`/api/users/updateLikes/${userID}/${postID}`);
   },
 
   loginUser: function(body) {

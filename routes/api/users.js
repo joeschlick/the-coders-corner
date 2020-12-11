@@ -33,7 +33,7 @@ router
     .delete(usersController.remove);
 
 router
-    .route('/updateLikes/:userID')
+    .route('/updateLikes/:userID/:postID')
     .put(usersController.updateLikes);
 
 module.exports = router;
