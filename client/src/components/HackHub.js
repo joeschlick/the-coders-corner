@@ -134,7 +134,16 @@ export default function HackHub() {
     })
   }
 
+function getLink(id) {
+  let userLink = '/userProfile/' + id;
+  return userLink;
+}
 
+function formatDate(date) {
+  date = date.slice(0, 19).replace("T", " ").slice(0, 16);
+  console.log(date)
+  return date
+}
 
   return (
     <div>
@@ -171,10 +180,10 @@ export default function HackHub() {
             </Button>
             {users.map((user) => (
                 <div className={classes.postStyles}>
-                  <h2 className={classes.span}>@{user.user}</h2>
+                  <a href={getLink(user.userID)} className={classes.span}>@{user.user}</a>
                   <h3>{user.post}</h3>
                   <p>Likes: {user.likes}</p>
-                  <p>{user.time}</p>
+                  <p>{formatDate(user.time)}</p>
                   <Button size="small" variant="outlined" color="primary" onClick={() => handleLike(user.userID, user._id, user.likes)}><i class="fas fa-thumbs-up"></i> Like </Button>
                 </div>
             ))}
