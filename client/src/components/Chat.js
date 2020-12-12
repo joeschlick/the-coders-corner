@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 //Nav
 import Navbar from "./Navbar";
 
-const socket = io.connect("http://localhost:3001/");
+const socketServer = process.env.SOCKET_URL || "http://localhost:3001/"
+const socket = io.connect(socketServer);
 
 const useStyles = makeStyles((theme) => ({
   root: {
