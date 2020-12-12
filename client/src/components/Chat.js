@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 //Nav
 import Navbar from "./Navbar";
 
-const socketServer = process.env.SOCKET_URL || "http://localhost:3001/"
+const socketServer = "https://the-coders-corner.herokuapp.com/"
+console.log(socketServer)
 const socket = io.connect(socketServer);
 
 const useStyles = makeStyles((theme) => ({
