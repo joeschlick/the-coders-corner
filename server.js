@@ -56,14 +56,19 @@ const server = app.listen(PORT, function () {
 });
 
 var expressWs = require('express-ws')(app);
+//const http = require("http").createServer(app)
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: `https://the-coders-corner.herokuapp.com:${process.env.PORT}` || "http://localhost:3000",
+    origin: process.env.SOCKET_URL || "http://localhost:3000",
     //ws: "//the-coders-corner.herokuapp.com/socket.io/?EIO=4&transport=websocket",
     methods: ["GET", "POST"],
   },
 });
+
+// http.listen(PORT, function () {
+//   console.log(`SocketIO Listening on port : ${PORT}`)
+// });
 
 io.on("connection", (socket) => {
   socket.on("message", ({ name, message }) => {
