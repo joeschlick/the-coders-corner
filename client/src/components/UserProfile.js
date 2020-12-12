@@ -64,7 +64,7 @@ export default function UserProfile(params) {
       .then((res) => {
         console.log(res);
         setPost(res.data.posts);
-        setUserInfo(res.data)
+        setUserInfo(res.data);
         console.log(res.data.posts);
       })
       .catch((err) => {
@@ -72,12 +72,8 @@ export default function UserProfile(params) {
       });
   }
 
-  
-  
-  //let newUser = loadUsers();
-  //console.log(newUser);
   console.log(post);
-  console.log(userInfo)
+  console.log(userInfo);
   let githubLink = `https://github.com/${userInfo.github}`;
 
   useEffect(() => {
@@ -86,8 +82,8 @@ export default function UserProfile(params) {
 
   function formatDate(date) {
     date = date.slice(0, 19).replace("T", " ").slice(0, 16);
-    console.log(date)
-    return date
+    console.log(date);
+    return date;
   }
 
   const { userData } = useContext(UserContext);
@@ -114,8 +110,7 @@ export default function UserProfile(params) {
                       : userInfo.jobTitle === "engineer" ||
                         userInfo.jobTitle === "Engineer"
                       ? engineerIcon
-                      : userInfo.jobTitle === "IT" ||
-                        userInfo.jobTitle === "it"
+                      : userInfo.jobTitle === "IT" || userInfo.jobTitle === "it"
                       ? itIcon
                       : userInfo.jobTitle === "security" ||
                         userInfo.jobTitle === "Security"
@@ -153,10 +148,7 @@ export default function UserProfile(params) {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Card
-              className={classes.cardStyles}
-              style={{ width: "90%" }}
-            >
+            <Card className={classes.cardStyles} style={{ width: "90%" }}>
               <CardContent>
                 <div>
                   <Typography variant="h1" class="coders-font">

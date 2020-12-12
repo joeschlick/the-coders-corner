@@ -38,7 +38,7 @@
 }
 
 .navbar-font {
-  font-family: 'Major Mono Display', monospace;
+  font-family: "Major Mono Display", monospace;
 }
 
 .coders-font {
@@ -51,10 +51,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color:#464646;
+  background-color: #464646;
 }
 
 .profile-picture {
-    border-radius: 50%;
+  border-radius: 50%;
 }
-
