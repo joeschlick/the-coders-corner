@@ -10,13 +10,13 @@ const useStyles = makeStyles(theme => ({
         marginTop: 25,
         marginBottom: 10,
         fontSize: "6vw",
-        fontFamily: "'Major Mono Display', monospace",
+        fontFamily: 'Cutive Mono, monospace',
         color: "#db7500"
     },
     headline: {
         marginBottom: 30,
         fontSize: "3vw",
-        fontFamily: "'Major Mono Display', monospace",
+        fontFamily: 'Cutive Mono, monospace',
     }
 }))
 
@@ -71,7 +71,7 @@ function NewsHeader() {
         <ThemeProvider>
             <div>
                 <Typography className={classes.title} variant='h2' align="center">
-                    Newsfeed
+                    NEWSFEED
                 </Typography>
                 <Typography className={classes.headline} variant='h5' align="center">
                     Surf the latest news in web development!

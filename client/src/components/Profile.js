@@ -108,7 +108,9 @@ export default function Profile() {
                       : defaultIcon
                   }
                 ></img>
-                <Typography variant="h4">
+                <br></br>
+                <br></br>
+                <Typography variant="h5">
                   {userInfo.user.firstName} {userInfo.user.lastName}
                 </Typography>
                 <Typography variant="h6">{userInfo.user.jobTitle}</Typography>
@@ -151,6 +153,7 @@ export default function Profile() {
                       </div>
                       <h3>{p.post}</h3>
                       <p>{p.time}</p>
+                     
                     </div>
                   ))}
                 </div>
