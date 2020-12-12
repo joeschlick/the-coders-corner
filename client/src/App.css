@@ -37,8 +37,12 @@
   }
 }
 
-.coders-font {
+.navbar-font {
   font-family: 'Major Mono Display', monospace;
+}
+
+.coders-font {
+  font-family: Cutive Mono, monospace;
 }
 
 body {

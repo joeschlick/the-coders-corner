@@ -35,13 +35,13 @@ const useStyles = makeStyles(theme => ({
         marginTop: 25,
         marginBottom: 10,
         fontSize: "6vw",
-        fontFamily: "'Major Mono Display', monospace",
+        fontFamily: 'Cutive Mono, monospace',
         color: "#db7500"
     },
     headline: {
         marginBottom: 30,
         fontSize: "3vw",
-        fontFamily: "'Major Mono Display', monospace",
+        fontFamily: 'Cutive Mono, monospace',
     },
     formContainer: {
         // margin: "auto",
@@ -150,7 +150,7 @@ function Chat() {
         <div>
             <Navbar/>
             <Typography className={classes.title} variant='h2' align="center">
-            Chat
+            CHAT
             </Typography>
             <Typography className={classes.headline} variant='h5' align="center">
                 Message fellow developers!

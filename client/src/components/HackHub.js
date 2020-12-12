@@ -18,13 +18,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 25,
     marginBottom: 10,
     fontSize: "6vw",
-    fontFamily: "'Major Mono Display', monospace",
+    fontFamily: 'Cutive Mono, monospace',
     color: "#db7500"
   },
   headline: {
     marginBottom: 30,
     fontSize: "3vw",
-    fontFamily: "'Major Mono Display', monospace",
+    fontFamily: 'Cutive Mono, monospace',
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -151,7 +151,7 @@ function formatDate(date) {
       <CssBaseline />
       <Paper className={classes.paper}>
       <Typography className={classes.title} variant="h1" align="center">
-        HackHub
+        HACKHUB
       </Typography>
       <Typography className={classes.headline} variant="h5" align="center">
         See what the hubbub is about!
