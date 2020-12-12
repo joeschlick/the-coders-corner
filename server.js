@@ -57,7 +57,7 @@ const server = app.listen(PORT, function () {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "ws://the-coders-corner.herokuapp.com/socket.io/?EIO=4&transport=websocket" || "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
