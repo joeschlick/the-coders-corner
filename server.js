@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require('body-parser');
-const passport = require('passport');
-require('dotenv').config();
+const bodyParser = require("body-parser");
+const passport = require("passport");
+require("dotenv").config();
 
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -19,15 +19,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
 // load passport strategies
-const localSignupStrategy = require('./passport/local-signup');
-const localLoginStrategy = require('./passport/local-login');
-passport.use('local-signup', localSignupStrategy);
-passport.use('local-login', localLoginStrategy);
+const localSignupStrategy = require("./passport/local-signup");
+const localLoginStrategy = require("./passport/local-login");
+passport.use("local-signup", localSignupStrategy);
+passport.use("local-login", localLoginStrategy);
 
 // pass the authenticaion checker middleware
 //const authCheckMiddleware = require('./middleware/auth-check');
 //app.use('/api', authCheckMiddleware);
-
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -39,30 +38,32 @@ app.use(routes);
 // Connect to the Mongo DB
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log('Established connection with MongoDB database.')
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Established connection with MongoDB database.");
+});
 
 // Start the API server
-const server = app.listen(PORT, function() {
+const server = app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
-
-
-const io = require('socket.io')(server, {
+const io = require("socket.io")(server, {
   cors: {
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST']
-  }
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
 });
 
-io.on('connection', socket => {
-  socket.on('message', ({name, message}) => {
-    io.emit('message', {name, message})
-  })
-})
+io.on("connection", (socket) => {
+  socket.on("message", ({ name, message }) => {
+    io.emit("message", { name, message });
+  });
+});

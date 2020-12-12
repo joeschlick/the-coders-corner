@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let User = require('../models/User');
+let User = require("../models/User");
 
 //const usersController = require("../../controllers/usersController");
 
@@ -18,7 +18,7 @@ router.route("/").get((req, res) => {
 router.route("/add").post((req, res) => {
   const userName = req.body.userName;
   const newUser = new User({ userName });
-  console.log("hello")
+  console.log("hello");
   newUser
     .save()
     .then(() => {

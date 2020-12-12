@@ -18,13 +18,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 25,
     marginBottom: 10,
     fontSize: "6vw",
-    fontFamily: 'Cutive Mono, monospace',
-    color: "#db7500"
+    fontFamily: "Cutive Mono, monospace",
+    color: "#db7500",
   },
   headline: {
     marginBottom: 30,
     fontSize: "3vw",
-    fontFamily: 'Cutive Mono, monospace',
+    fontFamily: "Cutive Mono, monospace",
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     margin: "auto",
     width: "80%",
-    //paddingBottom: 30,
     paddingBottom: theme.spacing(8),
   },
   postStyles: {
@@ -42,23 +41,23 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     borderRadius: "25px",
     border: "solid 1.5px",
-    justifyContent:'center',
+    justifyContent: "center",
     textAlign: "center",
   },
   form: {
-    width: "60%", // Fix IE 11 issue.
+    width: "60%",
     marginTop: theme.spacing(1),
   },
   span: {
     backgroundColor: "#db7500",
     borderRadius: "10px",
     color: "#fff",
-    padding: "5px"
+    padding: "5px",
   },
   postUsername: {
     color: "#fff",
-    fontSize: "20px"
-  }
+    fontSize: "20px",
+  },
 }));
 
 export default function HackHub() {
@@ -70,24 +69,24 @@ export default function HackHub() {
   let getUser = localStorage.getItem("user");
   let userInfo = JSON.parse(getUser);
 
-
   function loadUsers() {
     API.getUsers()
       .then((res) => {
-        console.log("response from get users", res)
-        let allPosts = []
+        console.log("response from get users", res);
+        let allPosts = [];
         res.data.map((p) => {
           if (p.posts.length === 0) {
-            return 
+            return;
           } else {
-          p.posts.map((i) => {
-            allPosts.push(i)
-          })}
-        })
-        allPosts = allPosts.sort(function(a,b){
+            p.posts.map((i) => {
+              allPosts.push(i);
+            });
+          }
+        });
+        allPosts = allPosts.sort(function (a, b) {
           return new Date(b.time) - new Date(a.time);
-          });
-        
+        });
+
         setUsers(allPosts);
       })
       .catch((err) => {
@@ -96,8 +95,8 @@ export default function HackHub() {
   }
 
   useEffect(() => {
-    loadUsers()
-  },[])
+    loadUsers();
+  }, []);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -127,73 +126,95 @@ export default function HackHub() {
 
   function handleLike(userID, postID, likes) {
     console.log("handleLike has been clicked");
-    likes+=1
+    likes += 1;
     console.log(likes);
-    // API.updateUser(userID, ({"$set": {"posts[2].$.likes": likes}})
-    API.updateLikes(userID, postID, {likes: likes}).then(res => {
-      console.log("calling updatelikes API")
-      loadUsers();
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
+    API.updateLikes(userID, postID, { likes: likes })
+      .then((res) => {
+        console.log("calling updatelikes API");
+        loadUsers();
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-function getLink(id) {
-  let userLink = '/userProfile/' + id;
-  return userLink;
-}
+  function getLink(id) {
+    let userLink = "/userProfile/" + id;
+    return userLink;
+  }
 
-function formatDate(date) {
-  date = date.slice(0, 19).replace("T", " ").slice(0, 16);
-  console.log(date)
-  return date
-}
+  function formatDate(date) {
+    date = date.slice(0, 19).replace("T", " ").slice(0, 16);
+    console.log(date);
+    return date;
+  }
 
   return (
     <div>
       <Navbar />
       <CssBaseline />
       <Paper elevation={4} className={classes.paper}>
-      <Typography className={classes.title} variant="h1" align="center">
-        HACKHUB
-      </Typography>
-      <Typography className={classes.headline} variant="h5" align="center">
-        See what the hubbub is about!
-      </Typography>
-            <Typography variant="h4" className={classes.headline}>@{userInfo.user.userName}</Typography>
-            <form className={classes.form} noValidate>
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="post"
-                onChange={handleInputChange}
-                name="post"
-                autoFocus
-                label="Write post here"
-            />
-            <Button
-                fullWidth
-                className={classes.submit}
+        <Typography className={classes.title} variant="h1" align="center">
+          HACKHUB
+        </Typography>
+        <Typography className={classes.headline} variant="h5" align="center">
+          See what the hubbub is about!
+        </Typography>
+        <Typography variant="h4" className={classes.headline}>
+          @{userInfo.user.userName}
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="post"
+            onChange={handleInputChange}
+            name="post"
+            autoFocus
+            label="Write post here"
+          />
+          <Button
+            fullWidth
+            className={classes.submit}
+            variant="contained"
+            disabled={!formObject.post}
+            onClick={handleFormSubmit}
+          >
+            Submit
+          </Button>
+          {users.map((user) => (
+            <div className={classes.postStyles}>
+              <div className={classes.span}>
+                <a className={classes.postUsername} href={getLink(user.userID)}>
+                  @{user.user}
+                </a>
+              </div>
+              {"www" === user.post.slice(0, 3) ||
+              "htt" === user.post.slice(0, 3) ? (
+                <h2>
+                  <a href={user.post}>{user.post}</a>
+                </h2>
+              ) : (
+                <h2>{user.post}</h2>
+              )}
+              {console.log(user.post.slice(0, 3))}
+              <h3>Likes: {user.likes}</h3>
+              <p>Date: {formatDate(user.time)}</p>
+              <Button
+                size="small"
                 variant="contained"
-                disabled={!formObject.post}
-                onClick={handleFormSubmit}
-            >
-                Submit
-            </Button>
-            {users.map((user) => (
-                <div className={classes.postStyles}>
-                <div className={classes.span}><a className={classes.postUsername} href={getLink(user.userID)}>@{user.user}</a></div>
-                  <h2>{user.post}</h2>
-                  <h3>Likes: {user.likes}</h3>
-                  <p>Date: {formatDate(user.time)}</p>
-                  <Button size="small" variant="contained" color="primary" onClick={() => handleLike(user.userID, user._id, user.likes)}><i class="fas fa-thumbs-up"></i> Like </Button>
-                </div>
-            ))}
-            </form>
-        </Paper>
-        </div>
+                color="primary"
+                onClick={() => handleLike(user.userID, user._id, user.likes)}
+              >
+                <i class="fas fa-thumbs-up"></i> Like{" "}
+              </Button>
+            </div>
+          ))}
+        </form>
+      </Paper>
+    </div>
   );
 }

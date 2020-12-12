@@ -71,15 +71,14 @@ export default function Profile() {
   console.log(post);
   let githubLink = `https://github.com/${userInfo.user.github}`;
 
-
   useEffect(() => {
     loadUsers();
   }, []);
 
   function formatDate(date) {
     date = date.slice(0, 19).replace("T", " ").slice(0, 16);
-    console.log(date)
-    return date
+    console.log(date);
+    return date;
   }
 
   const { userData } = useContext(UserContext);
@@ -160,7 +159,6 @@ export default function Profile() {
                       </div>
                       <h3>{p.post}</h3>
                       <p>Date: {formatDate(p.time)}</p>
-                     
                     </div>
                   ))}
                 </div>
