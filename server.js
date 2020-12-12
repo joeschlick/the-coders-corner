@@ -59,7 +59,7 @@ var expressWs = require('express-ws')(app);
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://the-coders-corner.herokuapp.com" || "http://localhost:3000",
+    origin: `https://the-coders-corner.herokuapp.com:${process.env.PORT}` || "http://localhost:3000",
     //ws: "//the-coders-corner.herokuapp.com/socket.io/?EIO=4&transport=websocket",
     methods: ["GET", "POST"],
   },
