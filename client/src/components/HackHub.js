@@ -51,8 +51,13 @@ const useStyles = makeStyles((theme) => ({
   },
   span: {
     backgroundColor: "#db7500",
-    borderRadius: "5px",
-    color: "#fff"
+    borderRadius: "10px",
+    color: "#fff",
+    padding: "5px"
+  },
+  postUsername: {
+    color: "#fff",
+    fontSize: "20px"
   }
 }));
 
@@ -149,7 +154,7 @@ function formatDate(date) {
     <div>
       <Navbar />
       <CssBaseline />
-      <Paper className={classes.paper}>
+      <Paper elevation={4} className={classes.paper}>
       <Typography className={classes.title} variant="h1" align="center">
         HACKHUB
       </Typography>
@@ -180,11 +185,11 @@ function formatDate(date) {
             </Button>
             {users.map((user) => (
                 <div className={classes.postStyles}>
-                  <a href={getLink(user.userID)} className={classes.span}>@{user.user}</a>
-                  <h3>{user.post}</h3>
-                  <p>Likes: {user.likes}</p>
-                  <p>{formatDate(user.time)}</p>
-                  <Button size="small" variant="outlined" color="primary" onClick={() => handleLike(user.userID, user._id, user.likes)}><i class="fas fa-thumbs-up"></i> Like </Button>
+                <div className={classes.span}><a className={classes.postUsername} href={getLink(user.userID)}>@{user.user}</a></div>
+                  <h2>{user.post}</h2>
+                  <h3>Likes: {user.likes}</h3>
+                  <p>Date: {formatDate(user.time)}</p>
+                  <Button size="small" variant="contained" color="primary" onClick={() => handleLike(user.userID, user._id, user.likes)}><i class="fas fa-thumbs-up"></i> Like </Button>
                 </div>
             ))}
             </form>
