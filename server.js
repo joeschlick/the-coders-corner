@@ -55,9 +55,12 @@ const server = app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
+var expressWs = require('express-ws')(app);
+
 const io = require("socket.io")(server, {
   cors: {
-    origin: "ws://the-coders-corner.herokuapp.com/socket.io/?EIO=4&transport=websocket" || "http://localhost:3000",
+    origin: "https://the-coders-corner.herokuapp.com" || "http://localhost:3000",
+    //ws: "//the-coders-corner.herokuapp.com/socket.io/?EIO=4&transport=websocket",
     methods: ["GET", "POST"],
   },
 });
