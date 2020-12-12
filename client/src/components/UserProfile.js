@@ -48,7 +48,6 @@ const useStyles = makeStyles({
   },
   jobIcon: {
     width: "40%",
-    height: "75%",
   },
 });
 
@@ -85,6 +84,12 @@ export default function UserProfile(params) {
     loadUsers();
   }, []);
 
+  function formatDate(date) {
+    date = date.slice(0, 19).replace("T", " ").slice(0, 16);
+    console.log(date)
+    return date
+  }
+
   const { userData } = useContext(UserContext);
   return (
     <div>
@@ -98,7 +103,6 @@ export default function UserProfile(params) {
                   <i class="fas fa-id-badge"></i> {userInfo.userName}
                 </Typography>
                 <br></br>
-
                 <img
                   alt="user-icon"
                   class="profile-picture"
@@ -119,27 +123,18 @@ export default function UserProfile(params) {
                       : defaultIcon
                   }
                 ></img>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          {/* User's profile information with links to websites */}
-          <Grid item xs={12} sm={6}>
-            <Card
-              className={classes.cardStyles}
-              style={{ height: 350, width: "90%" }}
-            >
-              <CardContent>
-                <Typography variant="h4">
+                <br></br>
+                <br></br>
+                <Typography variant="h5">
                   {userInfo.firstName} {userInfo.lastName}
                 </Typography>
                 <Typography variant="h6">{userInfo.jobTitle}</Typography>
                 <br></br>
-                <Typography>Contact Me:</Typography>
+                <Typography variant="h5">Contact Me:</Typography>
                 <Typography variant="h6">
                   <Link href={githubLink}>
                     <i class="fab fa-github-square"></i> GitHub:{" "}
-                    {userInfo.reduceRightgithub}
+                    {userInfo.github}
                   </Link>
                   <br></br>
                   <Link href={userInfo.linkedin}>
@@ -158,7 +153,10 @@ export default function UserProfile(params) {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Card className={classes.cardStyles} style={{ width: "90%" }}>
+            <Card
+              className={classes.cardStyles}
+              style={{ width: "90%" }}
+            >
               <CardContent>
                 <div>
                   <Typography variant="h1" class="coders-font">
@@ -172,7 +170,7 @@ export default function UserProfile(params) {
                         <i class="fas fa-code"></i>
                       </div>
                       <h3>{p.post}</h3>
-                      <p>{p.time}</p>
+                      <p>Date: {formatDate(p.time)}</p>
                     </div>
                   ))}
                 </div>
