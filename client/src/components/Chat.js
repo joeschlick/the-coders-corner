@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Navbar from "./Navbar";
 
 const socketServer = process.env.SOCKET_URL || "http://localhost:3001/"
+console.log(socketServer)
 const socket = io.connect(socketServer);
 
 const useStyles = makeStyles((theme) => ({
