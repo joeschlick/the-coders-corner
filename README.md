@@ -50,7 +50,7 @@ Coder's Corner is a MERN Stack application (MongoDB, Express, React, and Node). 
 
 ## Developers Remarks
 
-  * **Brian Praseuth:** 
+  * **Brian Praseuth:** This group project was an absolute pleasure to work on. Being able to use what we've gained throughout the program and apply it to one final project was a lot of fun. Besides the group coding as I whole I took part in completing the profile page and a good amount of the styling using Material UI. The project was definitely a good practice in working with a team on a real world application. My teammates and I collaborated extremely well and we were able to solve any problems as a unit. Definitely the most fun I've had so far and a fantastic way to finish out the program. Excited to take the all the knowledge gained from my team and expand on it in the future! Coder's Corner for the win!
   
   * **Joe Schlick:**
   
