@@ -54,7 +54,7 @@ Coder's Corner is a MERN Stack application (MongoDB, Express, React, and Node). 
   
   * **Joe Schlick:**
   
-  * **Kevin Doh:**
+  * **Kevin Doh:** This website is easily the most detailed and large-scale project I have worked on up to this point. It was a fun, challenging experience and a true test of applying what I've learned in this course. From designing the front-end in Illustrator, to implementing the Socket.io chat and feed, to coding and debugging the back-end alongside my groupmates over Zoom, it was all very educational and fulfilling. Definitely enjoyed collaborating on this project, and I'll be sure to take the knowledge I've gained here to future apps.
   
   * **David Lindner:** This project was a lot of fun to work on, and I had an awesom team to work with. I was responsible for the majority of the backend on the porject;           creating models, initial file/ route structure. This was the first time that I didn't loathe doing the backend. It was challenging but overall fun, and I had my               teammates to help me out. In the frontend I created the Editor page for writing code in the browser; I am really happy with how that turned out. What I liked most about       this project and working with this team was that I was able to dip my toes in a lot of the code due to the fact that we worked togther for a majority on the project and       were all working on the same thing at once. It allowed us to be very cohesive and not have a lot of issues. All in all, a really good time.
   
