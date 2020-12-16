@@ -52,11 +52,13 @@ Coder's Corner is a MERN Stack application (MongoDB, Express, React, and Node). 
 
   * **Brian Praseuth:** 
   
-  * **Joe Schlick:**
+  * **Joe Schlick:** This was the best project I've worked on by far. First and foremost the team was an absolute pleasure to work with. I was lucky to be on a team with such skilled coders. It helped deepen my understanding of MERN stack apps immensely.
+    My tasks were figuring out authentication, getting posts working on the hackhub, and
+  managing the github repo. Before this project I was very intimidated by the MERN stack, and now I feel much more comfortable. Since we coded together I got to be a part of every element. I am grateful for the opportunity to work on this project with these people.
   
   * **Kevin Doh:**
   
-  * **David Lindner:** This project was a lot of fun to work on, and I had an awesom team to work with. I was responsible for the majority of the backend on the porject;           creating models, initial file/ route structure. This was the first time that I didn't loathe doing the backend. It was challenging but overall fun, and I had my               teammates to help me out. In the frontend I created the Editor page for writing code in the browser; I am really happy with how that turned out. What I liked most about       this project and working with this team was that I was able to dip my toes in a lot of the code due to the fact that we worked togther for a majority on the project and       were all working on the same thing at once. It allowed us to be very cohesive and not have a lot of issues. All in all, a really good time.
+  * **David Lindner:** This project was a lot of fun to work on, and I had an awesome team to work with. I was responsible for the majority of the backend on the porject;           creating models, initial file/ route structure. This was the first time that I didn't loathe doing the backend. It was challenging but overall fun, and I had my               teammates to help me out. In the frontend I created the Editor page for writing code in the browser; I am really happy with how that turned out. What I liked most about       this project and working with this team was that I was able to dip my toes in a lot of the code due to the fact that we worked togther for a majority on the project and       were all working on the same thing at once. It allowed us to be very cohesive and not have a lot of issues. All in all, a really good time.
   
 ## License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
