@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
   Paper,
+  Grid,
   CssBaseline,
 } from "@material-ui/core";
 import API from "../utils/API";
@@ -32,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     margin: "auto",
-    width: "80%",
     paddingBottom: theme.spacing(8),
   },
   postStyles: {
@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   form: {
-    width: "60%",
     marginTop: theme.spacing(1),
   },
   span: {
@@ -154,6 +153,9 @@ export default function HackHub() {
     <div>
       <Navbar />
       <CssBaseline />
+      <Grid alignItems="center"
+        justify="center"
+        container >
       <Paper elevation={4} className={classes.paper}>
         <Typography className={classes.title} variant="h1" align="center">
           HACKHUB
@@ -164,7 +166,10 @@ export default function HackHub() {
         <Typography variant="h4" className={classes.headline}>
           @{userInfo.user.userName}
         </Typography>
+       
         <form className={classes.form} noValidate>
+        <Grid item xs={12} style={{margin: "30px"}}>
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -185,7 +190,9 @@ export default function HackHub() {
           >
             Submit
           </Button>
+        </Grid>
           {users.map((user) => (
+            <Grid justify="center" item xs={12} style={{margin: "20px"}}>
             <div className={classes.postStyles}>
               <div className={classes.span}>
                 <a className={classes.postUsername} href={getLink(user.userID)}>
@@ -212,9 +219,11 @@ export default function HackHub() {
                 <i class="fas fa-thumbs-up"></i> Like{" "}
               </Button>
             </div>
+            </Grid>
           ))}
         </form>
       </Paper>
+      </Grid>
     </div>
   );
 }

@@ -57,3 +57,7 @@ body {
 .profile-picture {
   border-radius: 50%;
 }
+
+#root {
+  margin-top: 90px;
+}

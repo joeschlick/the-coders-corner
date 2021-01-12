@@ -8,6 +8,7 @@ import {
   TextField,
   Typography,
   Container,
+  Grid,
   Paper,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -85,7 +86,6 @@ export default function Signup() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      width: "50%",
       margin: "auto",
       backgroundColor: "#edf6f9",
     },
@@ -112,6 +112,10 @@ export default function Signup() {
     <>
       <LoginSignupNav />
       <CssBaseline />
+      <Grid style={{marginTop: "60px"}} justify="center" alignItems="center" container>
+        <Grid item xs={12}
+        sm={6}
+        md={4}>
       <Paper className={classes.paper} elevation={8}>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -121,6 +125,10 @@ export default function Signup() {
             sign up
           </Typography>
           <Typography variant="p">Welcome to the Coder's Corner</Typography>
+          <Grid container item xs={10}
+        sm={6}
+        md={4}>
+
           <form className={classes.form} noValidate>
             <TextField
               variant="filled"
@@ -141,7 +149,7 @@ export default function Signup() {
               id="lastName"
               onChange={handleInputChange}
               name="lastName"
-              autoFocus
+
               label="Last Name"
             />
             <TextField
@@ -152,7 +160,7 @@ export default function Signup() {
               id="userName"
               onChange={handleInputChange}
               name="userName"
-              autoFocus
+
               label="Username"
             />
             <TextField
@@ -164,7 +172,7 @@ export default function Signup() {
               onChange={handleInputChange}
               type="password"
               name="password"
-              autoFocus
+
               label="Password"
             />
             <TextField
@@ -176,7 +184,7 @@ export default function Signup() {
               onChange={handleInputChange}
               name="email"
               type="email"
-              autoFocus
+
               label="Email"
             />
             <TextField
@@ -186,7 +194,7 @@ export default function Signup() {
               id="github"
               onChange={handleInputChange}
               name="github"
-              autoFocus
+
               label="Github Username"
             />
             <TextField
@@ -196,7 +204,6 @@ export default function Signup() {
               id="linkedin"
               onChange={handleInputChange}
               name="linkedin"
-              autoFocus
               label="Linkedin URL"
             />
             <TextField
@@ -232,8 +239,12 @@ export default function Signup() {
               ))}
             </ul>
           </form>
+        </Grid>
         </div>
       </Paper>
+        </Grid>
+
+      </Grid>
     </>
   );
 }
