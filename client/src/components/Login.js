@@ -10,6 +10,7 @@ import {
   Typography,
   Container,
   Paper,
+  Grid,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -82,7 +83,6 @@ export default function Login() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      width: "50%",
       margin: "auto",
       backgroundColor: "#edf6f9",
     },
@@ -106,59 +106,69 @@ export default function Login() {
     <>
       <LoginSignupNav />
       <CssBaseline />
-      <Paper className={classes.paper} elevation={8}>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography class="coders-font" component="h1" variant="h5">
-            Login
-          </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="filled"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              autoComplete="email"
-              autoFocus
-              onChange={handleInputChange}
-              name="email"
-              type="email"
-              placeholder="Email"
-            />
-            <TextField
-              variant="filled"
-              margin="normal"
-              required
-              fullWidth
-              label="password"
-              id="password"
-              auto-complete="current-password"
-              onChange={handleInputChange}
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-            <Button
-              fullWidth
-              className={classes.submit}
-              variant="contained"
-              disabled={!(formObject.email && formObject.password)}
-              onClick={handleFormSubmit}
-            >
-              Log In
-            </Button>
-          </form>
-        </div>
-
-        <Box mt={8}>
-          <Copyright />
-        </Box>
-        <br></br>
-      </Paper>
+      <Grid
+        style={{ marginTop: "60px" }}
+        alignItems="center"
+        justify="center"
+        container
+      >
+        <Grid item xs={12} sm={6} md={4}>
+          <Paper className={classes.paper} elevation={8}>
+            <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography class="coders-font" component="h1" variant="h5">
+                Login
+              </Typography>
+              <Grid container item xs={10} sm={6} md={4}>
+                <form className={classes.form} noValidate>
+                  <TextField
+                    variant="filled"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email"
+                    autoComplete="email"
+                    autoFocus
+                    onChange={handleInputChange}
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                  />
+                  <TextField
+                    variant="filled"
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="password"
+                    id="password"
+                    auto-complete="current-password"
+                    onChange={handleInputChange}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <Button
+                    fullWidth
+                    className={classes.submit}
+                    variant="contained"
+                    disabled={!(formObject.email && formObject.password)}
+                    onClick={handleFormSubmit}
+                  >
+                    Log In
+                  </Button>
+                </form>
+              </Grid>
+            </div>
+            <Box mt={8}>
+              <Copyright />
+            </Box>
+            <br></br>
+          </Paper>
+        </Grid>
+      </Grid>
     </>
   );
 }

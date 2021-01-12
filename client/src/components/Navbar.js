@@ -99,7 +99,7 @@ export default function Navbar() {
   return (
     <div>
       <Box component="nav">
-        <AppBar position="static" style={{ background: "#457b9d" }}>
+        <AppBar position="fixed" style={{ background: "#457b9d" }}>
           <Toolbar>
             <IconButton onClick={toggleSlider("left", true)}>
               <MenuIcon style={{ color: "white" }} />

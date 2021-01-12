@@ -28,7 +28,7 @@ export default function LoginSignupNav() {
 
   return (
     <Box component="nav">
-      <AppBar position="static" style={{ background: "#457b9d" }}>
+      <AppBar position="fixed" style={{ background: "#457b9d" }}>
         <Toolbar>
           <i class="fab fa-connectdevelop fa-3x"></i>
           <Typography
