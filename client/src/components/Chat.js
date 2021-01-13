@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import { Typography, Grid, Button, TextField } from "@material-ui/core";
+import {
+  Typography,
+  Grid,
+  Button,
+  TextField,
+  Container,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 //Nav
@@ -42,23 +48,18 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "3vw",
     fontFamily: "Cutive Mono, monospace",
   },
-  formContainer: {
-    // margin: "auto",
-    //justifyContent: "center",
-    //display: "flex",
-  },
   form: {
     //width: "70vh",
     //height: "215px",
-    display: "flex",
+    //display: "flex",
     flexDirection: "column",
     borderRadius: 20,
     backgroundColor: "#457b9d",
-    backgroundColor: '#737578',
+    backgroundColor: "#737578",
     //marginLeft: "40px",
     //marginRight: "20px",
     padding: "30px",
-    maxWidth: "600px",
+    //maxWidth: "300px",
   },
   sendTitle: {
     color: "#E0E0E0",
@@ -66,13 +67,13 @@ const useStyles = makeStyles((theme) => ({
   chatLog: {
     //width: "100vw",
     height: "60vh",
-    display: "flex",
+    //display: "flex",
     flexDirection: "column",
     // boxShadow: '3px 2px 5px rgba(0,0,0,.26)',
     borderRadius: 20,
     backgroundColor: "#E0E0E0",
     //marginRight: "40px",
-    maxWidth: "600px",
+    //maxWidth: "600px",
   },
   chatLogTitle: {
     margin: 0,
@@ -149,50 +150,50 @@ function Chat() {
   return (
     <div>
       <Navbar />
+      <Container>
+        <Typography className={classes.title} variant="h2" align="center">
+          CHAT
+        </Typography>
+        <Typography className={classes.headline} variant="h5" align="center">
+          Message fellow developers!
+        </Typography>
+        <Grid justify="center" container spacing={3} alignItems="flex-start">
+            <Grid item xs={12} sm={6}>
+              <form className={classes.form}>
+                <Typography className={classes.sendTitle} variant="h6">
+                  Send a Message
+                </Typography>
+                <div className={classes.messageField}>
+                  <TextField
+                    name="message"
+                    onChange={(e) => onTextChange(e)}
+                    value={state.message}
+                    variant="filled"
+                    label="Message"
+                  />
+                </div>
+                <Button
+                  className={classes.sendBtn}
+                  variant="contained"
+                  onClick={onMessageSubmit}
+                >
+                  Send
+                </Button>
+              </form>
+            </Grid>
 
-      <Typography className={classes.title} variant="h2" align="center">
-        CHAT
-      </Typography>
-      <Typography className={classes.headline} variant="h5" align="center">
-        Message fellow developers!
-      </Typography>
-      <Grid alignItems="center" justify="center" container>
-        <div className={classes.formContainer}>
-          <Grid item xs={12} s={6}>
-            <form className={classes.form}>
-              <Typography className={classes.sendTitle} variant="h6">
-                Send a Message
-              </Typography>
-              <div className={classes.messageField}>
-                <TextField
-                  name="message"
-                  onChange={(e) => onTextChange(e)}
-                  value={state.message}
-                  variant="filled"
-                  label="Message"
-                />
+            <Grid item xs={12} sm={6}>
+              <div className={classes.chatLog}>
+                <Typography className={classes.chatLogTitle} variant="h5">
+                  Live Message Board
+                </Typography>
+                <div className={classes.messageContainer} id="messageContainer">
+                  {renderChat()}
+                </div>
               </div>
-              <Button
-                className={classes.sendBtn}
-                variant="contained"
-                onClick={onMessageSubmit}
-              >
-                Send
-              </Button>
-            </form>
-          </Grid>
-          <Grid item xs={12}>
-            <div className={classes.chatLog}>
-              <Typography className={classes.chatLogTitle} variant="h5">
-                Live Message Board
-              </Typography>
-              <div className={classes.messageContainer} id="messageContainer">
-                {renderChat()}
-              </div>
-            </div>
-          </Grid>
-        </div>
-      </Grid>
+            </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
