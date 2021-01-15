@@ -112,7 +112,7 @@ export default function Login() {
         justify="center"
         container
       >
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={8} md={5}>
           <Paper className={classes.paper} elevation={8}>
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
@@ -121,7 +121,7 @@ export default function Login() {
               <Typography class="coders-font" component="h1" variant="h5">
                 Login
               </Typography>
-              <Grid container item xs={10} sm={6} md={4}>
+              <Grid container item xs={10} sm={6} md={6}>
                 <form className={classes.form} noValidate>
                   <TextField
                     variant="filled"

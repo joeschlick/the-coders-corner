@@ -42,11 +42,23 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "6vw",
     fontFamily: "Cutive Mono, monospace",
     color: "#db7500",
+    '@media (max-width:650px)': {
+      fontSize: '10vw',
+    },
+    '@media (max-width:480px)': {
+      fontSize: '12vw',
+    },
   },
   headline: {
     marginBottom: 30,
     fontSize: "3vw",
     fontFamily: "Cutive Mono, monospace",
+    '@media (max-width:650px)': {
+      fontSize: '4vw',
+    },
+    '@media (max-width:480px)': {
+      fontSize: '6vw',
+    },
   },
   form: {
     //width: "70vh",
