@@ -113,9 +113,7 @@ export default function Signup() {
       <LoginSignupNav />
       <CssBaseline />
       <Grid style={{marginTop: "60px"}} justify="center" alignItems="center" container>
-        <Grid item xs={12}
-        sm={6}
-        md={4}>
+        <Grid item xs={12} sm={8} md={6}>
       <Paper className={classes.paper} elevation={8}>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -125,9 +123,7 @@ export default function Signup() {
             sign up
           </Typography>
           <Typography variant="p">Welcome to the Coder's Corner</Typography>
-          <Grid container item xs={10}
-        sm={6}
-        md={4}>
+          <Grid container item xs={10} sm={6} md={6}>
 
           <form className={classes.form} noValidate>
             <TextField

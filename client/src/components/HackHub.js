@@ -18,14 +18,20 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: 25,
     marginBottom: 10,
-    fontSize: "6vw",
+    fontSize: "8vw",
     fontFamily: "Cutive Mono, monospace",
     color: "#db7500",
+    '@media (max-width:650px)': {
+      fontSize: '12vw',
+    },
   },
   headline: {
-    marginBottom: 30,
+    // marginBottom: 30,
     fontSize: "3vw",
     fontFamily: "Cutive Mono, monospace",
+    '@media (max-width:650px)': {
+      fontSize: '5vw',
+    },
   },
   paper: {
     marginTop: theme.spacing(8),
