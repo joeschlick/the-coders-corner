@@ -6,7 +6,7 @@ import {
   ThemeProvider,
   createMuiTheme,
 } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import {Typography, Grid} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -71,7 +71,7 @@ function NewsHeader() {
         <Typography className={classes.headline} variant="h5" align="center">
           Surf the latest news in web development!
         </Typography>
-
+        <Grid container spacing={3}>
         {newsArray.slice(0, 10).map((item) => {
           return (
             <NewsPost
@@ -83,6 +83,7 @@ function NewsHeader() {
             />
           );
         })}
+        </Grid>
       </div>
     </ThemeProvider>
   );

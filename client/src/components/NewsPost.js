@@ -4,7 +4,7 @@ import {
   ThemeProvider,
   createMuiTheme,
 } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import {Typography, Grid} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -13,28 +13,25 @@ const useStyles = makeStyles((theme) => ({
     color: "#db7500",
   },
   bigContainer: {
-    display: "flex",
     justifyContent: "center",
   },
   containers: {
-    backgroundColor: "rgba(38,50,56,0.9)",
+    backgroundColor: "rgba(38,50,56,0.95)",
     color: "white",
     padding: 25,
     paddingLeft: 35,
     paddingRight: 35,
     paddingBottom: 35,
-    margin: 20,
     marginLeft: "5%",
     marginRight: "5%",
     borderRadius: 25,
     lineHeight: 2,
-    maxWidth: "1100px",
   },
   summary: {
     lineHeight: 1.8,
   },
   link: {
-    overflowWrap: "normal",
+    overflowWrap: "break-word",
     color: "#5190b8",
   },
 }));
@@ -42,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
 function NewsPost(props) {
   let classes = useStyles();
   return (
+    <Grid item
+    xs={12}
+    sm={10}
+    md={6}
+    lg={4}>
     <div className={classes.bigContainer}>
       <div className={classes.containers}>
         <p>{props.date}</p>
@@ -56,7 +58,9 @@ function NewsPost(props) {
         </a>
       </div>
     </div>
+    </Grid>
   );
+  
 }
 
 export default NewsPost;
